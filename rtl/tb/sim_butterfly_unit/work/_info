@@ -1,0 +1,85 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/FPGA/FPGA-based-PQC-Acc/rtl/tb/sim_butterfly_unit
+vbutterfly_unit
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1770540918
+!i10b 1
+!s100 cnQkSGP1?NkPS041YPV;J2
+I[37b>mJQz0IB]AgPUXB=n2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 butterfly_unit_sv_unit
+S1
+R0
+w1770540913
+8../../ntt/butterfly_unit.sv
+F../../ntt/butterfly_unit.sv
+L0 1
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1770540918.000000
+!s107 ../../ntt/butterfly_unit.sv|
+!s90 -reportprogress|300|-cover|bcse|-work|work|../../ntt/butterfly_unit.sv|
+!i113 1
+Z6 !s102 -cover bcse
+Z7 o-cover bcse -work work
+Z8 tCvgOpt 0
+vmont_InvTF_unit
+R1
+R2
+!i10b 1
+!s100 M<zMcjgZF2oWdL7IemePS1
+Ied?8<FmQ8J^mJUmen]H;_1
+R3
+!s105 mont_inv_transform_sv_unit
+S1
+R0
+w1770300604
+8../../ntt/mont_inv_transform.sv
+F../../ntt/mont_inv_transform.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 ../../ntt/mont_inv_transform.sv|
+!s90 -reportprogress|300|-cover|bcse|-work|work|../../ntt/mont_inv_transform.sv|
+!i113 1
+R6
+R7
+R8
+nmont_@inv@t@f_unit
+vtb_bntt
+R1
+R2
+!i10b 1
+!s100 N``a`Ac@@:YFKPLOTJ1;[2
+IW`SX8Q82>0?>>i;B=S:f:0
+R3
+!s105 tb_bntt_sv_unit
+S1
+R0
+w1770540818
+8tb_bntt.sv
+Ftb_bntt.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 tb_bntt.sv|
+!s90 -reportprogress|300|-work|work|tb_bntt.sv|
+!i113 1
+o-work work
+R8

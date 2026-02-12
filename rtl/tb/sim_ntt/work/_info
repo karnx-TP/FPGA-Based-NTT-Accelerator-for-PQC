@@ -1,0 +1,211 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/FPGA/FPGA-based-PQC-Acc/rtl/tb/sim_ntt
+vbram_dp_word
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1770824931
+!i10b 1
+!s100 _UPgn5MgaX]C`hO`N=`mV3
+I7[P@_6kAFf5gdEg;6:cH73
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 bram_dp_word_sv_unit
+S1
+R0
+w1770533413
+8../../ram_rom/bram_dp_word.sv
+F../../ram_rom/bram_dp_word.sv
+L0 7
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1770824931.000000
+Z6 !s107 ../../ram_rom/rom_w_inv_NTT.sv|../../ram_rom/rom_wNTT.sv|../../ram_rom/bram_dp_word.sv|
+Z7 !s90 -reportprogress|300|-cover|bcse|-work|work|../../ram_rom/bram_dp_word.sv|../../ram_rom/rom_wNTT.sv|../../ram_rom/rom_w_inv_NTT.sv|
+!i113 1
+Z8 !s102 -cover bcse
+Z9 o-cover bcse -work work
+Z10 tCvgOpt 0
+vbutterfly_unit
+R1
+R2
+!i10b 1
+!s100 B0MLHnXlXh8Lo0Q9IFYi[1
+IJ_1]K?=]gLUnGiPY;YQzg0
+R3
+!s105 butterfly_unit_sv_unit
+S1
+R0
+w1770819904
+8../../ntt/butterfly_unit.sv
+F../../ntt/butterfly_unit.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+Z11 !s107 ../../ntt/ntt_top.sv|../../ntt/ntt_butterfly.sv|../../ntt/mont_inv_transform.sv|../../ntt/butterfly_unit.sv|
+Z12 !s90 -reportprogress|300|-cover|bcse|-work|work|../../ntt/butterfly_unit.sv|../../ntt/mont_inv_transform.sv|../../ntt/ntt_butterfly.sv|../../ntt/ntt_top.sv|
+!i113 1
+R8
+R9
+R10
+vmont_InvTF_unit
+R1
+R2
+!i10b 1
+!s100 hTja^UCULcoAz?SUPmVAU1
+IcBmOU^KGOOn2DZ3fY3e9T1
+R3
+!s105 mont_inv_transform_sv_unit
+S1
+R0
+w1770820920
+8../../ntt/mont_inv_transform.sv
+F../../ntt/mont_inv_transform.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R11
+R12
+!i113 1
+R8
+R9
+R10
+nmont_@inv@t@f_unit
+vntt_butterfly
+R1
+R2
+!i10b 1
+!s100 Yfb49ePMPN8e`:6eS`khH2
+IFAWWXV:35YW4^1AH;mW>12
+R3
+!s105 ntt_butterfly_sv_unit
+S1
+R0
+w1770824926
+8../../ntt/ntt_butterfly.sv
+F../../ntt/ntt_butterfly.sv
+L0 5
+R4
+r1
+!s85 0
+31
+R5
+R11
+R12
+!i113 1
+R8
+R9
+R10
+vNTT_top
+R1
+R2
+!i10b 1
+!s100 >WMl<SjliIdDH5Rcb:KRP0
+IAg>kHo0YUH>?cOo@<IFi33
+R3
+!s105 ntt_top_sv_unit
+S1
+R0
+w1770817681
+8../../ntt/ntt_top.sv
+F../../ntt/ntt_top.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R11
+R12
+!i113 1
+R8
+R9
+R10
+n@n@t@t_top
+vrom_intt
+R1
+R2
+!i10b 1
+!s100 C7OnM=jJHKAK^6AF1AfbJ0
+I=N^dF`SMdz<djP4>nPcZW3
+R3
+!s105 rom_w_inv_NTT_sv_unit
+S1
+R0
+Z13 w1770730741
+8../../ram_rom/rom_w_inv_NTT.sv
+F../../ram_rom/rom_w_inv_NTT.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+R10
+vrom_ntt
+R1
+R2
+!i10b 1
+!s100 :GlKKQRoYfbZ]GdFIPh6G1
+I6TRW=AchDZjJ>H28JI95f3
+R3
+!s105 rom_wNTT_sv_unit
+S1
+R0
+R13
+8../../ram_rom/rom_wNTT.sv
+F../../ram_rom/rom_wNTT.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+R10
+vtb_ntt
+R1
+R2
+!i10b 1
+!s100 BDI[EmSdg0a6YiMTV>gBA3
+Ij470dATBo99<dGVl;39bO3
+R3
+!s105 tb_ntt_sv_unit
+S1
+R0
+w1770787030
+8tb_ntt.sv
+Ftb_ntt.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 tb_ntt.sv|
+!s90 -reportprogress|300|-work|work|tb_ntt.sv|
+!i113 1
+o-work work
+R10
