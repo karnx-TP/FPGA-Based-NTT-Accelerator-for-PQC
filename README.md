@@ -4,15 +4,15 @@ Hardware Implementation of Post-Quantum Cryptography Algorithms Accelerator(ML-K
 ---
 
 ### About Author & Project
-I am a senior Electrical Engineering student with a strong interest in **Hardware Security, FPGA Acceleration, and Digital IC Design**.  
+I am a senior Electrical Engineering student with a strong interest in **VLSI, Hardware Accelerator, FPGA, and Digital IC Design**.  
 This project focuses on the hardware implementation of **Post-Quantum Cryptography (PQC)**, specifically the **Kyber (ML-KEM)** algorithm, which has been selected by NIST for standardization.
 
-The goal of this project is to bridge the gap between algorithmic research and hardware implementation by designing a **Accelerator for Kyber Key Generation** focusing on NTT transformation which is the main operation used in this algorithm.
+The goal of this project is to explore and learn about both cryptographic algorithm and hardware implementation by designing a **Accelerator for Kyber Key Generation** focusing on NTT transformation which is the main operation used in this algorithm.
 
 **Note**
 ```
 This project documents my journey in PQC hardware design.
-It focuses on optimizing complex arithmetic operations (NTT/INTT) for FPGA resources.
+It focuses on optimizing arithmetic operations (NTT/INTT) for FPGA resources.
 The repository is organized to separate RTL design, Verification, and Software reference models.
 
 For suggestions, feedback, or technical discussions 
@@ -39,6 +39,10 @@ This project implements a hardware accelerator for **Module-Lattice-Based Key-En
 - **Language:** Python 3
 - **Libraries:** NumPy (for matrix benchmarks), standard math libraries
 - **Scripts:** Custom scripts for generating test vectors (`.csv`) for the testbench.
+
+### FPGA Implementation
+- **Synthesis and PnR** Vivado
+- **Target Board** Alinx AX7010 (Zynq7000)
 
 ## Design Flow
 
@@ -111,8 +115,8 @@ Before moving to hardware, I profiled different polynomial multiplication method
 ## Future Work
 - Full NTT Accelerator: Complete the control logic for the `ntt_butterfly.sv` module to handle full 256-coefficient polynomials.
 
-- Kyber KeyGen Integration: Implement the matrix expansion and noise generation modules.
+- Kyber KeyGen : Extend the hardware to cover Polynomial Multiplication and Matrix Multiplication for Kyber Key generation algorithm
 
-- System Integration: Wrap the accelerator with an AXI-Stream or AXI-Lite interface to connect with a RISC-V soft-core (from my previous project).
+- System Integration: Develop an AXI4-Lite Slave Interface for SoC memory-mapped configuration to connect with Zynq7000 ARM Processor or a RISC-V soft-core (from my previous project).
 
 - On-Board Verification: Synthesize the design on the AX7010 (Zynq-7000) platform.
