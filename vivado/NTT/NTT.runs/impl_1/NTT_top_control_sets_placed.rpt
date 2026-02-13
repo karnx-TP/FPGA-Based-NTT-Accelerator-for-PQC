@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date         : Thu Feb 12 20:59:55 2026
+| Date         : Fri Feb 13 19:37:45 2026
 | Host         : LAPTOP-GM1L3F93 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file NTT_top_control_sets_placed.rpt
 | Design       : NTT_top
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |    56 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   225 |
+| Unused register locations in slices containing registers |   209 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             562 |          235 |
+| No           | No                    | No                     |             562 |          249 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             270 |          160 |
-| Yes          | No                    | No                     |            1072 |          488 |
+| No           | Yes                   | No                     |             270 |          161 |
+| Yes          | No                    | No                     |            1280 |          529 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              39 |           19 |
+| Yes          | Yes                   | No                     |              39 |           21 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -74,61 +74,61 @@ Table of Contents
 |  Clock Signal  |                   Enable Signal                  |                        Set/Reset Signal                        | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------+--------------------------------------------------+----------------------------------------------------------------+------------------+----------------+--------------+
 |  clk_IBUF_BUFG | mode0_out                                        |                                                                |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[0].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                2 |              3 |         1.50 |
-|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[1].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                1 |              3 |         3.00 |
-|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[3].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                1 |              3 |         3.00 |
-|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[2].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                2 |              3 |         1.50 |
-|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[6].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                1 |              3 |         3.00 |
-|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[7].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                1 |              3 |         3.00 |
-|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[4].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                1 |              3 |         3.00 |
 |  clk_IBUF_BUFG |                                                  | uNTT/genblk2[5].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                2 |              3 |         1.50 |
+|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[1].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                1 |              3 |         3.00 |
+|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[7].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                1 |              3 |         3.00 |
+|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[2].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                2 |              3 |         1.50 |
+|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[0].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                1 |              3 |         3.00 |
+|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[4].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                2 |              3 |         1.50 |
+|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[3].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                2 |              3 |         1.50 |
+|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[6].u_bf_unit/mont_inv_inst/rStart[2]_i_1_n_0      |                1 |              3 |         3.00 |
 |  clk_IBUF_BUFG |                                                  | uNTT/rWrCnt[3]_i_1_n_0                                         |                1 |              4 |         4.00 |
 |  clk_IBUF_BUFG |                                                  | uNTT/rDataRdCnt[4]_i_1_n_0                                     |                1 |              5 |         5.00 |
-|  clk_IBUF_BUFG | rStartAddrW[0]                                   |                                                                |                5 |             11 |         2.20 |
-|  clk_IBUF_BUFG | rOffsetIntt_W[0]                                 |                                                                |                2 |             11 |         5.50 |
-|  clk_IBUF_BUFG | rStartAddrA[0]                                   |                                                                |                2 |             11 |         5.50 |
-|  clk_IBUF_BUFG | rUserRdDataOut[12]_i_1_n_0                       |                                                                |                8 |             13 |         1.62 |
-|  clk_IBUF_BUFG |                                                  | uNTT/rBfuB[7][13]_i_1_n_0                                      |               13 |             13 |         1.00 |
+|  clk_IBUF_BUFG | rOffsetIntt_W[0]                                 |                                                                |                3 |             11 |         3.67 |
+|  clk_IBUF_BUFG | rStartAddrW[0]                                   |                                                                |                4 |             11 |         2.75 |
+|  clk_IBUF_BUFG | rStartAddrA[0]                                   |                                                                |                4 |             11 |         2.75 |
+|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[2].u_bf_unit/FSM_onehot_rState_current[8]_i_1_n_0 |                6 |             13 |         2.17 |
+|  clk_IBUF_BUFG | rDataQ[0]                                        |                                                                |                4 |             13 |         3.25 |
+|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[4].u_bf_unit/FSM_onehot_rState_current[8]_i_1_n_0 |                4 |             13 |         3.25 |
+|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[3].u_bf_unit/FSM_onehot_rState_current[8]_i_1_n_0 |                6 |             13 |         2.17 |
+|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[5].u_bf_unit/FSM_onehot_rState_current[8]_i_1_n_0 |                5 |             13 |         2.60 |
+|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[1].u_bf_unit/FSM_onehot_rState_current[8]_i_1_n_0 |                4 |             13 |         3.25 |
 |  clk_IBUF_BUFG |                                                  | uNTT/genblk2[6].u_bf_unit/FSM_onehot_rState_current[8]_i_1_n_0 |                2 |             13 |         6.50 |
-|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[3].u_bf_unit/FSM_onehot_rState_current[8]_i_1_n_0 |                5 |             13 |         2.60 |
-|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[1].u_bf_unit/FSM_onehot_rState_current[8]_i_1_n_0 |                2 |             13 |         6.50 |
-|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[4].u_bf_unit/FSM_onehot_rState_current[8]_i_1_n_0 |                5 |             13 |         2.60 |
-|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[2].u_bf_unit/FSM_onehot_rState_current[8]_i_1_n_0 |                4 |             13 |         3.25 |
-|  clk_IBUF_BUFG | uNTT/genblk2[1].u_bf_unit/mont_inv_inst/resultEn |                                                                |                4 |             13 |         3.25 |
-|  clk_IBUF_BUFG | uNTT/genblk2[7].u_bf_unit/mont_inv_inst/resultEn |                                                                |                7 |             13 |         1.86 |
-|  clk_IBUF_BUFG | uNTT/genblk2[0].u_bf_unit/mont_inv_inst/resultEn |                                                                |                6 |             13 |         2.17 |
-|  clk_IBUF_BUFG | uNTT/genblk2[3].u_bf_unit/mont_inv_inst/resultEn |                                                                |                7 |             13 |         1.86 |
-|  clk_IBUF_BUFG | uNTT/genblk2[2].u_bf_unit/mont_inv_inst/resultEn |                                                                |                4 |             13 |         3.25 |
+|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[7].u_bf_unit/FSM_onehot_rState_current[8]_i_1_n_0 |                2 |             13 |         6.50 |
 |  clk_IBUF_BUFG |                                                  | uNTT/genblk2[0].u_bf_unit/outEn_i_1_n_0                        |                5 |             13 |         2.60 |
-|  clk_IBUF_BUFG | rDataQ[0]                                        |                                                                |                3 |             13 |         4.33 |
-|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[5].u_bf_unit/FSM_onehot_rState_current[8]_i_1_n_0 |                4 |             13 |         3.25 |
-|  clk_IBUF_BUFG |                                                  | uNTT/genblk2[7].u_bf_unit/FSM_onehot_rState_current[8]_i_1_n_0 |                4 |             13 |         3.25 |
+|  clk_IBUF_BUFG | uNTT/genblk2[1].u_bf_unit/mont_inv_inst/resultEn |                                                                |                5 |             13 |         2.60 |
+|  clk_IBUF_BUFG | uNTT/genblk2[7].u_bf_unit/mont_inv_inst/resultEn |                                                                |                6 |             13 |         2.17 |
+|  clk_IBUF_BUFG | rUserRdDataOut[12]_i_1_n_0                       |                                                                |                7 |             13 |         1.86 |
+|  clk_IBUF_BUFG | uNTT/genblk2[0].u_bf_unit/mont_inv_inst/resultEn |                                                                |                6 |             13 |         2.17 |
 |  clk_IBUF_BUFG | rDataQ_inv[0]                                    |                                                                |                3 |             13 |         4.33 |
-|  clk_IBUF_BUFG | uNTT/genblk2[6].u_bf_unit/mont_inv_inst/resultEn |                                                                |                6 |             13 |         2.17 |
+|  clk_IBUF_BUFG |                                                  | uNTT/rBfuB[7][13]_i_1_n_0                                      |               13 |             13 |         1.00 |
+|  clk_IBUF_BUFG | uNTT/genblk2[2].u_bf_unit/mont_inv_inst/resultEn |                                                                |                6 |             13 |         2.17 |
+|  clk_IBUF_BUFG | uNTT/genblk2[3].u_bf_unit/mont_inv_inst/resultEn |                                                                |                5 |             13 |         2.60 |
 |  clk_IBUF_BUFG | uNTT/genblk2[4].u_bf_unit/mont_inv_inst/resultEn |                                                                |                7 |             13 |         1.86 |
-|  clk_IBUF_BUFG | uNTT/genblk2[5].u_bf_unit/mont_inv_inst/resultEn |                                                                |                5 |             13 |         2.60 |
+|  clk_IBUF_BUFG | uNTT/genblk2[5].u_bf_unit/mont_inv_inst/resultEn |                                                                |                7 |             13 |         1.86 |
+|  clk_IBUF_BUFG | uNTT/genblk2[6].u_bf_unit/mont_inv_inst/resultEn |                                                                |                6 |             13 |         2.17 |
+|  clk_IBUF_BUFG | uNTT/genblk2[3].u_bf_unit/rAddResultModQ[0]      |                                                                |                8 |             26 |         3.25 |
+|  clk_IBUF_BUFG | uNTT/genblk2[2].u_bf_unit/rAddResultModQ[0]      |                                                                |                9 |             26 |         2.89 |
 |  clk_IBUF_BUFG | uNTT/genblk2[0].u_bf_unit/rAddResultModQ[0]      |                                                                |               10 |             26 |         2.60 |
+|  clk_IBUF_BUFG | uNTT/genblk2[6].u_bf_unit/rAddResultModQ[0]      |                                                                |                9 |             26 |         2.89 |
+|  clk_IBUF_BUFG | uNTT/genblk2[4].u_bf_unit/rAddResultModQ[0]      |                                                                |               10 |             26 |         2.60 |
+|  clk_IBUF_BUFG | uNTT/genblk2[1].u_bf_unit/rAddResultModQ[0]      |                                                                |                9 |             26 |         2.89 |
+|  clk_IBUF_BUFG | uNTT/genblk2[5].u_bf_unit/rAddResultModQ[0]      |                                                                |               11 |             26 |         2.36 |
 |  clk_IBUF_BUFG | uNTT/genblk2[7].u_bf_unit/rAddResultModQ[0]      |                                                                |                9 |             26 |         2.89 |
-|  clk_IBUF_BUFG | uNTT/genblk2[5].u_bf_unit/rAddResultModQ[0]      |                                                                |                8 |             26 |         3.25 |
-|  clk_IBUF_BUFG | uNTT/genblk2[1].u_bf_unit/rAddResultModQ[0]      |                                                                |                7 |             26 |         3.71 |
-|  clk_IBUF_BUFG | uNTT/genblk2[3].u_bf_unit/rAddResultModQ[0]      |                                                                |               10 |             26 |         2.60 |
-|  clk_IBUF_BUFG | uNTT/genblk2[2].u_bf_unit/rAddResultModQ[0]      |                                                                |               10 |             26 |         2.60 |
-|  clk_IBUF_BUFG | uNTT/genblk2[4].u_bf_unit/rAddResultModQ[0]      |                                                                |                7 |             26 |         3.71 |
-|  clk_IBUF_BUFG | uNTT/genblk2[6].u_bf_unit/rAddResultModQ[0]      |                                                                |               10 |             26 |         2.60 |
-|  clk_IBUF_BUFG | uNTT/genblk2[5].u_bf_unit/rA_mod_q[0]            |                                                                |                9 |             27 |         3.00 |
-|  clk_IBUF_BUFG | uNTT/genblk2[2].u_bf_unit/rA_mod_q[0]            |                                                                |                9 |             27 |         3.00 |
-|  clk_IBUF_BUFG | uNTT/genblk2[1].u_bf_unit/rA_mod_q[0]            |                                                                |                9 |             27 |         3.00 |
-|  clk_IBUF_BUFG | uNTT/genblk2[4].u_bf_unit/rA_mod_q[0]            |                                                                |                9 |             27 |         3.00 |
-|  clk_IBUF_BUFG | uNTT/genblk2[7].u_bf_unit/rA_mod_q[0]            |                                                                |                9 |             27 |         3.00 |
-|  clk_IBUF_BUFG | uNTT/genblk2[0].u_bf_unit/rA_mod_q[0]            |                                                                |                9 |             27 |         3.00 |
-|  clk_IBUF_BUFG | uNTT/genblk2[6].u_bf_unit/rA_mod_q[0]            |                                                                |                9 |             27 |         3.00 |
-|  clk_IBUF_BUFG | uNTT/genblk2[3].u_bf_unit/rA_mod_q[0]            |                                                                |                9 |             27 |         3.00 |
-|  clk_IBUF_BUFG | p_5_in[0]                                        |                                                                |               13 |             39 |         3.00 |
-|  clk_IBUF_BUFG | uNTT/genblk2[0].u_bf_unit/outEn                  | uNTT/offset_i[0]                                               |               19 |             39 |         2.05 |
-|  clk_IBUF_BUFG |                                                  | uNTT/rBfuA[0][13]_i_1_n_0                                      |              103 |            120 |         1.17 |
-|  clk_IBUF_BUFG | uNTT/rDirectMulMod1_reg_n_0                      |                                                                |               70 |            208 |         2.97 |
-|  clk_IBUF_BUFG | uNTT/rA[14][13]_i_1_n_0                          |                                                                |              192 |            224 |         1.17 |
-|  clk_IBUF_BUFG |                                                  |                                                                |              235 |            706 |         3.00 |
+|  clk_IBUF_BUFG | p_5_in[0]                                        |                                                                |                9 |             39 |         4.33 |
+|  clk_IBUF_BUFG | uNTT/genblk2[0].u_bf_unit/outEn                  | uNTT/offset_i[0]                                               |               21 |             39 |         1.86 |
+|  clk_IBUF_BUFG | uNTT/genblk2[3].u_bf_unit/rA_mod_q[0]            |                                                                |               14 |             53 |         3.79 |
+|  clk_IBUF_BUFG | uNTT/genblk2[2].u_bf_unit/rA_mod_q[0]            |                                                                |               17 |             53 |         3.12 |
+|  clk_IBUF_BUFG | uNTT/genblk2[0].u_bf_unit/rA_mod_q[0]            |                                                                |               12 |             53 |         4.42 |
+|  clk_IBUF_BUFG | uNTT/genblk2[1].u_bf_unit/rA_mod_q[0]            |                                                                |               14 |             53 |         3.79 |
+|  clk_IBUF_BUFG | uNTT/genblk2[5].u_bf_unit/rA_mod_q[0]            |                                                                |               15 |             53 |         3.53 |
+|  clk_IBUF_BUFG | uNTT/genblk2[7].u_bf_unit/rA_mod_q[0]            |                                                                |               16 |             53 |         3.31 |
+|  clk_IBUF_BUFG | uNTT/genblk2[6].u_bf_unit/rA_mod_q[0]            |                                                                |               15 |             53 |         3.53 |
+|  clk_IBUF_BUFG | uNTT/genblk2[4].u_bf_unit/rA_mod_q[0]            |                                                                |               15 |             53 |         3.53 |
+|  clk_IBUF_BUFG |                                                  | uNTT/rBfuA[0][13]_i_1_n_0                                      |              100 |            120 |         1.20 |
+|  clk_IBUF_BUFG | uNTT/rDirectMulMod1_reg_n_0                      |                                                                |               65 |            208 |         3.20 |
+|  clk_IBUF_BUFG | uNTT/rA[14][13]_i_1_n_0                          |                                                                |              188 |            224 |         1.19 |
+|  clk_IBUF_BUFG |                                                  |                                                                |              249 |            706 |         2.84 |
 +----------------+--------------------------------------------------+----------------------------------------------------------------+------------------+----------------+--------------+
 
 

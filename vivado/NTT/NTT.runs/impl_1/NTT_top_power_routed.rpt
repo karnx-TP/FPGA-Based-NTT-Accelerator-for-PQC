@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date             : Thu Feb 12 21:00:46 2026
+| Date             : Fri Feb 13 19:38:38 2026
 | Host             : LAPTOP-GM1L3F93 running 64-bit major release  (build 9200)
 | Command          : report_power -file NTT_top_power_routed.rpt -pb NTT_top_power_summary_routed.pb -rpx NTT_top_power_routed.rpx
 | Design           : NTT_top
@@ -33,7 +33,7 @@ Table of Contents
 | Total On-Chip Power (W)  | 0.189        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.096        |
+| Dynamic (W)              | 0.097        |
 | Device Static (W)        | 0.093        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 82.8         |
@@ -53,14 +53,14 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.012 |        3 |       --- |             --- |
-| Slice Logic              |     0.024 |     9778 |       --- |             --- |
-|   LUT as Logic           |     0.021 |     6350 |     17600 |           36.08 |
+| Slice Logic              |     0.024 |     9986 |       --- |             --- |
+|   LUT as Logic           |     0.022 |     6346 |     17600 |           36.06 |
 |   CARRY4                 |     0.002 |      284 |      4400 |            6.45 |
-|   Register               |    <0.001 |     1943 |     35200 |            5.52 |
+|   Register               |    <0.001 |     2151 |     35200 |            6.11 |
 |   LUT as Distributed RAM |    <0.001 |       80 |      6000 |            1.33 |
 |   F7/F8 Muxes            |    <0.001 |       73 |     17600 |            0.41 |
 |   Others                 |     0.000 |       74 |       --- |             --- |
-| Signals                  |     0.033 |     8717 |       --- |             --- |
+| Signals                  |     0.034 |     8925 |       --- |             --- |
 | Block RAM                |     0.004 |      1.5 |        60 |            2.50 |
 | DSPs                     |     0.023 |       24 |        80 |           30.00 |
 | I/O                      |    <0.001 |       46 |       100 |           46.00 |
@@ -151,18 +151,18 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| NTT_top                  |     0.096 |
-|   ramA                   |     0.003 |
+| NTT_top                  |     0.097 |
+|   ramA                   |     0.002 |
 |   uNTT                   |     0.091 |
-|     genblk2[0].u_bf_unit |     0.007 |
+|     genblk2[0].u_bf_unit |     0.008 |
 |       mont_inv_inst      |     0.003 |
-|     genblk2[1].u_bf_unit |     0.007 |
+|     genblk2[1].u_bf_unit |     0.008 |
 |       mont_inv_inst      |     0.003 |
 |     genblk2[2].u_bf_unit |     0.008 |
 |       mont_inv_inst      |     0.003 |
 |     genblk2[3].u_bf_unit |     0.008 |
 |       mont_inv_inst      |     0.003 |
-|     genblk2[4].u_bf_unit |     0.007 |
+|     genblk2[4].u_bf_unit |     0.008 |
 |       mont_inv_inst      |     0.003 |
 |     genblk2[5].u_bf_unit |     0.008 |
 |       mont_inv_inst      |     0.003 |

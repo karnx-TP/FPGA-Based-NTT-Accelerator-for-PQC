@@ -175,8 +175,8 @@ module butterfly_unit #(
 		.rstB(rstB),
 
 		.a(rMulResult), //Positive only
-		.m(q),
-		.m_inv(q_invr),
+		.m(rQ),
+		.m_inv(rQ_invr),
 		
 		.start(rMontStart),
 		.result(wMulModResult),

@@ -178,7 +178,7 @@ module ntt_butterfly #(
 		end
 	end
 
-	//MARK: RD_DATA
+//MARK: RD_DATA
 	always @(posedge clk ) begin
 		if(rState_current == STIDLE)begin
 			rDataRdCnt <= 0;
@@ -218,7 +218,8 @@ module ntt_butterfly #(
 			end
 		end
 	end
-	//MARK: Butterfly
+	
+//MARK: Butterfly
 	always @(posedge clk ) begin
 		if(rState_current == ST_RD_DATA)begin
 			rOpCnt <= 0;
@@ -226,7 +227,6 @@ module ntt_butterfly #(
 			rOpCnt <= rOpCnt + 1;
 		end
 	end
-
 	
 	always @(posedge clk ) begin
 		if(rState_current == ST_RD_DATA && wState_next == ST_BF)begin
@@ -330,7 +330,7 @@ module ntt_butterfly #(
 	endgenerate
 
 
-	//Scale
+//MARK: Scale
 	always @(posedge clk ) begin
 		rDirectMulMod = (wState_next == ST_SCALE && rState_current != ST_SCALE) || (rState_current == ST_SCALE && wResEn[0]);
 		
@@ -340,7 +340,9 @@ module ntt_butterfly #(
 			rScaleCnt <= rScaleCnt + 1;
 		end
 	end
-	
+
+
+//MARK: WB
 	//WB
 	always @(posedge clk ) begin
 		if(!rstB)begin

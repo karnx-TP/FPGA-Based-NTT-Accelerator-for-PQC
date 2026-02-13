@@ -8,12 +8,11 @@
   **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
   **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
   **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-  **** Start of session at: Thu Feb 12 20:56:52 2026
+  **** Start of session at: Fri Feb 13 19:36:12 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source NTT_top.tcl -notrace
-create_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:10 . Memory (MB): peak = 607.059 ; gain = 221.703
 Command: read_checkpoint -auto_incremental -incremental C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado/NTT/NTT.srcs/utils_1/imports/synth_1/NTT_top.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado/NTT/NTT.srcs/utils_1/imports/synth_1/NTT_top.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -26,9 +25,9 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 8256
+INFO: [Synth 8-7075] Helper process launched with PID 8540
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1364.789 ; gain = 542.344
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1363.703 ; gain = 541.500
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'NTT_top' [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_top.sv:8]
 INFO: [Synth 8-155] case statement is not full and has no default [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_top.sv:71]
@@ -77,8 +76,6 @@ INFO: [Synth 8-6157] synthesizing module 'rom_intt' [C:/FPGA/PQC-Hardware/FPGA-B
 INFO: [Synth 8-6155] done synthesizing module 'rom_intt' (0#1) [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ram_rom/rom_w_inv_NTT.sv:1]
 INFO: [Synth 8-6155] done synthesizing module 'NTT_top' (0#1) [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_top.sv:8]
 WARNING: [Synth 8-3936] Found unconnected internal register 'rX_reg' and it is trimmed from '26' to '13' bits. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/mont_inv_transform.sv:72]
-WARNING: [Synth 8-6014] Unused sequential element rQ_reg was removed.  [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/butterfly_unit.sv:141]
-WARNING: [Synth 8-6014] Unused sequential element rQ_invr_reg was removed.  [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/butterfly_unit.sv:142]
 WARNING: [Synth 8-3848] Net rAdd_sub in module/entity butterfly_unit does not have driver. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/butterfly_unit.sv:38]
 WARNING: [Synth 8-6014] Unused sequential element rReadDataStart_reg was removed.  [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:175]
 WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:214]
@@ -208,18 +205,18 @@ WARNING: [Synth 8-7129] Port din[2] in module rom_ntt is either unconnected or h
 WARNING: [Synth 8-7129] Port din[1] in module rom_ntt is either unconnected or has no load
 WARNING: [Synth 8-7129] Port din[0] in module rom_ntt is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1510.398 ; gain = 687.953
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1508.887 ; gain = 686.684
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1510.398 ; gain = 687.953
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1508.887 ; gain = 686.684
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1510.398 ; gain = 687.953
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1508.887 ; gain = 686.684
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.139 . Memory (MB): peak = 1510.398 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.051 . Memory (MB): peak = 1508.887 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -228,28 +225,28 @@ Parsing XDC File [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado
 Finished Parsing XDC File [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado/NTT/NTT.srcs/constrs_1/new/conxdc.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1555.492 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1570.965 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.051 . Memory (MB): peak = 1555.492 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 1570.965 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:27 . Memory (MB): peak = 1555.492 ; gain = 733.047
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1570.965 ; gain = 748.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:23 ; elapsed = 00:00:27 . Memory (MB): peak = 1555.492 ; gain = 733.047
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1570.965 ; gain = 748.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:27 . Memory (MB): peak = 1555.492 ; gain = 733.047
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1570.965 ; gain = 748.762
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'rState_current_reg' in module 'butterfly_unit'
 WARNING: [Synth 8-3936] Found unconnected internal register 'rDataRdCnt1_reg' and it is trimmed from '5' to '4' bits. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:191]
@@ -269,7 +266,7 @@ WARNING: [Synth 8-3936] Found unconnected internal register 'rDataRdCnt1_reg' an
 INFO: [Synth 8-3354] encoded FSM with state register 'rState_current_reg' using encoding 'one-hot' in module 'butterfly_unit'
 INFO: [Synth 8-3971] The signal "bram_dp_word:/ram_reg" was recognized as a true dual port RAM template.
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 1555.492 ; gain = 733.047
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1570.965 ; gain = 748.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -292,7 +289,7 @@ Detailed RTL Component Info :
 	               26 Bit    Registers := 8     
 	               16 Bit    Registers := 5     
 	               14 Bit    Registers := 32    
-	               13 Bit    Registers := 92    
+	               13 Bit    Registers := 108   
 	               11 Bit    Registers := 6     
 	                5 Bit    Registers := 1     
 	                4 Bit    Registers := 32    
@@ -456,7 +453,7 @@ WARNING: [Synth 8-7129] Port din[1] in module rom_ntt is either unconnected or h
 WARNING: [Synth 8-7129] Port din[0] in module rom_ntt is either unconnected or has no load
 INFO: [Synth 8-3971] The signal "ramA/ram_reg" was recognized as a true dual port RAM template.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:54 ; elapsed = 00:01:00 . Memory (MB): peak = 1975.199 ; gain = 1152.754
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 1983.402 ; gain = 1161.199
 ---------------------------------------------------------------------------------
  Sort Area is  wR1divR0_10 : 0 0 : 1357 1357 : Used 1 time 0
  Sort Area is  wR1divR0_13 : 0 0 : 1357 1357 : Used 1 time 0
@@ -542,13 +539,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:05 ; elapsed = 00:01:12 . Memory (MB): peak = 1975.199 ; gain = 1152.754
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1983.402 ; gain = 1161.199
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:08 ; elapsed = 00:01:15 . Memory (MB): peak = 1975.199 ; gain = 1152.754
+Finished Timing Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 1983.402 ; gain = 1161.199
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -580,7 +577,7 @@ INFO: [Synth 8-7052] The timing for the instance ramA/ram_reg (implemented as a 
 INFO: [Synth 8-7052] The timing for the instance uROM_ntt/d_out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance uROM_intt/d_out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:16 ; elapsed = 00:01:24 . Memory (MB): peak = 2057.789 ; gain = 1235.344
+Finished Technology Mapping : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 2067.770 ; gain = 1245.566
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -592,19 +589,19 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:23 ; elapsed = 00:01:31 . Memory (MB): peak = 2070.668 ; gain = 1248.223
+Finished IO Insertion : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2084.379 ; gain = 1262.176
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:23 ; elapsed = 00:01:31 . Memory (MB): peak = 2070.668 ; gain = 1248.223
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2084.379 ; gain = 1262.176
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:24 ; elapsed = 00:01:32 . Memory (MB): peak = 2070.691 ; gain = 1248.246
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 2084.379 ; gain = 1262.176
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -665,35 +662,35 @@ Report Cell Usage:
 |14    |RAM32M   |    16|
 |15    |RAM32X1D |     8|
 |16    |RAMB18E1 |     3|
-|19    |FDRE     |  1929|
+|19    |FDRE     |  2137|
 |20    |FDSE     |    14|
 |21    |IBUF     |    30|
 |22    |OBUF     |    16|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:24 ; elapsed = 00:01:33 . Memory (MB): peak = 2070.691 ; gain = 1248.246
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 2084.379 ; gain = 1262.176
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 33 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:09 ; elapsed = 00:01:28 . Memory (MB): peak = 2070.691 ; gain = 1203.152
-Synthesis Optimization Complete : Time (s): cpu = 00:01:24 ; elapsed = 00:01:33 . Memory (MB): peak = 2070.691 ; gain = 1248.246
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:36 . Memory (MB): peak = 2084.379 ; gain = 1200.098
+Synthesis Optimization Complete : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 2084.379 ; gain = 1262.176
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.118 . Memory (MB): peak = 2080.125 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.057 . Memory (MB): peak = 2093.582 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 408 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2084.234 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2097.648 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 24 instances were transformed.
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 16 instances
   RAM32X1D => RAM32X1D (RAMD32(x2)): 8 instances
 
-Synth Design complete | Checksum: b58eab8d
+Synth Design complete | Checksum: 73e52457
 INFO: [Common 17-83] Releasing license: Synthesis
-44 Infos, 95 Warnings, 0 Critical Warnings and 0 Errors encountered.
+44 Infos, 93 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:31 ; elapsed = 00:01:45 . Memory (MB): peak = 2084.234 ; gain = 1470.703
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 2084.234 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:00:44 . Memory (MB): peak = 2097.648 ; gain = 1482.562
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 2097.648 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado/NTT/NTT.runs/synth_1/NTT_top.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file NTT_top_utilization_synth.rpt -pb NTT_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Feb 12 20:58:56 2026...
+INFO: [Common 17-206] Exiting Vivado at Fri Feb 13 19:37:02 2026...

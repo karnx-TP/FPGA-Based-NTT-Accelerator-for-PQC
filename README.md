@@ -54,8 +54,8 @@ This project implements a hardware accelerator for **Module-Lattice-Based Key-En
    - Designed modular arithmetic units (`butterfly_unit`, `mont_inv_transform`).
 
 3. **Functional Simulation:**
-   - Generated `.csv` test vectors from the Python Golden Model.
    - Verified RTL behavior using SystemVerilog testbenches (`tb_bntt.sv`).
+   - Compared the output to the result from Python.
 
 4. **Accelerator Integration (In Progress):**
    - Developing the full NTT control logic and memory access patterns.
@@ -64,36 +64,29 @@ This project implements a hardware accelerator for **Module-Lattice-Based Key-En
 
 Before moving to hardware, I profiled different polynomial multiplication methods in Python to justify the need for hardware acceleration and efficient algorithms.
 
-**Python Execution Time Comparison (N=256):**
+**Python Execution Time Comparison for PolyMult(N=256):**
 | Method | Time (seconds) | Note |
 | :--- | :--- | :--- |
 | **Numpy** | 0.004318 | Standard library |
 | **Classic Poly Mult** | 0.001779 | Naive implementation |
 | **My Matrix Mult NTT** | **0.000309** | Optimized algorithmic approach |
 | **My Full Butterfly NTT**| 0.002292 | Slower in Python due to loops, but highly parallelizable in Hardware |
-|**Hardware Perf Approx.**|0.000004| 1 NTT = 10 cycle latency with 100MHz|
+|**Hardware Perf Approx.**|**0.000004**| 1 NTT = 10 cycle latency with 100MHz and Butterfly do parallelly|
 
 *Hardware approximation treats Butterfly loop as parallel operation which result in the loop of butterfly operation times are counted as parallel.*
 
 *Observation: The Full Butterfly approach struggles in Python due to sequential execution of loops, but it is the optimal architecture for FPGA implementation due to its parallel nature.*
 
-## Module Description
+## Source Files Description
 
-### 0. NTT Top Module (`/rtl/ntt/ntt_top.sv`)
-- Top module for NTT hardware
-- Included Data Bus interfaces and Register-Mapped
-- Accessed by Read and Write Registers
+### RTL (`/rtl/ntt`)
+- All main RTL source codes for implementing NTT Acceleraot.
 
-### 1. NTT Butterfly Unit (`/rtl/ntt/butterfly_unit.sv`)
-- Implemented the butterfly operation which supports both Cooley-Tukey (NTT) and Gentleman-Sande (INTT) configurations
-- Optimized for **Kyber** modulus (q = 7681).
-- Uses Montgomery reduction to keep values within 16-bit bounds without expensive division.
+### Memory Module (`/rtl/ram_rom`)
+- **`bram_dp_word.sv`**: dual port ram for containing polynamial coefficients value (a)
+- **`rom_**`**: Rom for twiddle factor
 
-### 2. Montgomery Inverse Transform (`/rtl/ntt/mont_inv_transform.sv`)
-- Handles conversion between the Montgomery domain and the standard domain.
-- Used in conjunction with NTT when pre-computed twiddle factors are in the Montgomery domain.
-
-### 3. Verification Environment (`/rtl/tb`)
+### Verification Environment (`/rtl/tb`)
 - **`sim_**`**: testbench folders includes testbench file, run scripts and wave files for each test methods.
 
 - **Data Driven**: Compares RTL output against output from Python Computation result
@@ -102,8 +95,8 @@ Before moving to hardware, I profiled different polynomial multiplication method
 
 ## FPGA Implementaion
 - Target Board : Alinx AX7010 (Xilinx Zynq7000)
-- Current Fmax = **100MHz**
-#### For the Design Details See 📁 /vivado
+- Current Maximum Frequency : **100MHz**
+#### For the Implementation Details See 📁 /vivado
 
 ## Current Successful Work
 - Butterfly Unit has 2 mode : NTT Butterfly and Direct MultMod which allow user to access MultMod logic inside directly
