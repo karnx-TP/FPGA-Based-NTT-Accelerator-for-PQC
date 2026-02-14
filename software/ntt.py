@@ -675,7 +675,9 @@ def main():
 	btf_cnt = 8
 	op_per_stage = Test_N//(2*btf_cnt)
 	elapsed_time_fastfull_par = ((op_per_stage*btf_calc_time)*stage_cnt*3) + vectordot_time
-	elapsed_time_fastfull_hw = ((op_per_stage*(100e-9))*stage_cnt*3) + ((10e-9)*256)
+	overhead_cycles = Test_N*2 #Rd ramA, WB ramA
+	bf_cycles_each_op = 10
+	elapsed_time_fastfull_hw = ((((op_per_stage*bf_cycles_each_op)+overhead_cycles)*10e-9*stage_cnt)*3) + vectordot_time
 	print("**Full Butterfly 1 pair operation",f"{btf_calc_time:.6f} seconds")
 	print("My Full Butterfly NTT Parallel (python speed)\t: ",f"{elapsed_time_fastfull_par:.6f} seconds")
 	print("My Full Butterfly NTT Real HW approx (1 NTT = 7 cycle latency;100MHz)",f"{elapsed_time_fastfull_hw:.6f} seconds")

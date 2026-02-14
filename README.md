@@ -71,7 +71,7 @@ Before moving to hardware, I profiled different polynomial multiplication method
 | **Classic Poly Mult** | 0.001779 | Naive implementation |
 | **My Matrix Mult NTT** | **0.000309** | Optimized algorithmic approach |
 | **My Full Butterfly NTT**| 0.002292 | Slower in Python due to loops, but highly parallelizable in Hardware |
-|**Hardware Perf Approx.**|**0.000004**| 1 NTT = 10 cycle latency with 100MHz and Butterfly do parallelly|
+|**Hardware Perf Approx.**|**0.000027**| 1 butterfly unit = 10 cycles latency with 100MHz and Butterfly do parallelly and includes ram R/W|
 
 *Hardware approximation treats Butterfly loop as parallel operation which result in the loop of butterfly operation times are counted as parallel.*
 
@@ -103,6 +103,10 @@ Before moving to hardware, I profiled different polynomial multiplication method
 - Correctly Mux selecting for each stages in Butterfly operation
 - Computed NTT and INTT operation for N=16, q=7681
 - Accessed NTT accelerator using Data Bus and Register-Mapped
+
+## Current Performance
+- **1 Butterfly Unit latency** : 10 cycles
+- **Full NTT/iNTT computation latency** : 89 cycles
 
 
 ## Future Work
