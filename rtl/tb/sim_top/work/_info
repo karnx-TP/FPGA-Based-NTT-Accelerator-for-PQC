@@ -10,7 +10,7 @@ cModel Technology
 dC:/FPGA/FPGA-based-PQC-Acc/rtl/tb/sim_top
 vbram_dp_word
 Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z1 !s110 1771037258
+Z1 !s110 1771336766
 !i10b 1
 !s100 _UPgn5MgaX]C`hO`N=`mV3
 I7[P@_6kAFf5gdEg;6:cH73
@@ -26,16 +26,16 @@ Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1771037257.000000
-Z6 !s107 ../../ram_rom/rom_w_inv_NTT.sv|../../ram_rom/rom_wNTT.sv|../../ram_rom/bram_dp_word.sv|
-Z7 !s90 -reportprogress|300|-cover|bcse|-work|work|../../ram_rom/bram_dp_word.sv|../../ram_rom/rom_wNTT.sv|../../ram_rom/rom_w_inv_NTT.sv|
+Z5 !s108 1771336766.000000
+Z6 !s107 ../../ram_rom/rom_w_inv_NTT.sv|../../ram_rom/rom_wNTT.sv|../../ram_rom/exceed_addr_dec.sv|../../ram_rom/exceed_W_addr_dec.sv|../../ram_rom/bram_dp_word.sv|
+Z7 !s90 -reportprogress|300|-cover|bcse|-work|work|../../ram_rom/bram_dp_word.sv|../../ram_rom/exceed_W_addr_dec.sv|../../ram_rom/exceed_addr_dec.sv|../../ram_rom/rom_wNTT.sv|../../ram_rom/rom_w_inv_NTT.sv|
 !i113 1
 Z8 !s102 -cover bcse
 Z9 o-cover bcse -work work
 Z10 tCvgOpt 0
 vbutterfly_unit
 R0
-Z11 !s110 1771037257
+R1
 !i10b 1
 !s100 3[]i1KEHhEme7kJ9E:@A41
 IF5Zd>C@igHO>BX7z3Cf481
@@ -51,16 +51,67 @@ R4
 r1
 !s85 0
 31
-R5
+Z11 !s108 1771336765.000000
 Z12 !s107 ../../ntt/ntt_top.sv|../../ntt/ntt_butterfly.sv|../../ntt/mont_inv_transform.sv|../../ntt/butterfly_unit.sv|
 Z13 !s90 -reportprogress|300|-cover|bcse|-work|work|../../ntt/butterfly_unit.sv|../../ntt/mont_inv_transform.sv|../../ntt/ntt_butterfly.sv|../../ntt/ntt_top.sv|
 !i113 1
 R8
 R9
 R10
+vexceed_addr_dec
+R0
+R1
+!i10b 1
+!s100 hzXnW8<FT5RYfBj_;5<U03
+Ia=Oo:cbOM6PiFoJ7z88U42
+R2
+!s105 exceed_addr_dec_sv_unit
+S1
+R3
+Z14 w1771335998
+8../../ram_rom/exceed_addr_dec.sv
+F../../ram_rom/exceed_addr_dec.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+R10
+vexceed_W_addr_dec
+R0
+R1
+!i10b 1
+!s100 Bg17ZaoEnn;jO4k>[8EEL2
+Ig?h]E;JTLNY?G]D<>P5@82
+R2
+!s105 exceed_W_addr_dec_sv_unit
+S1
+R3
+R14
+8../../ram_rom/exceed_W_addr_dec.sv
+F../../ram_rom/exceed_W_addr_dec.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+R10
+nexceed_@w_addr_dec
 vmont_InvTF_unit
 R0
-R11
+R1
 !i10b 1
 !s100 oHj^j;ekXSN2lB:a_mc8Q0
 I16hV4HUhUInf?NM3XMNVV1
@@ -76,7 +127,7 @@ R4
 r1
 !s85 0
 31
-R5
+R11
 R12
 R13
 !i113 1
@@ -86,15 +137,15 @@ R10
 nmont_@inv@t@f_unit
 vntt_butterfly
 R0
-R11
+R1
 !i10b 1
-!s100 g@JkhY=0K6fOnnoRWdWXS1
-IczNo99U[El9dbc>_:CGfB0
+!s100 W>hj?6C5JA]FF3;;a5K:;1
+IeM9IJ_`aElZAJQ8`8HiF;3
 R2
 !s105 ntt_butterfly_sv_unit
 S1
 R3
-w1770956312
+w1771336321
 8../../ntt/ntt_butterfly.sv
 F../../ntt/ntt_butterfly.sv
 L0 11
@@ -102,7 +153,7 @@ R4
 r1
 !s85 0
 31
-R5
+R11
 R12
 R13
 !i113 1
@@ -111,15 +162,15 @@ R9
 R10
 vNTT_top
 R0
-R11
+R1
 !i10b 1
-!s100 ggaH3>d:M<T1MA7V255;`1
-IKZONNY@NSlad_Pz09ljlc1
+!s100 J2Pz_M@ncn`OX^o0MGBf03
+IPi4AGDB^bSY:e;EY[04zY0
 R2
 !s105 ntt_top_sv_unit
 S1
 R3
-w1770902694
+w1771336428
 8../../ntt/ntt_top.sv
 F../../ntt/ntt_top.sv
 L0 8
@@ -127,7 +178,7 @@ R4
 r1
 !s85 0
 31
-R5
+R11
 R12
 R13
 !i113 1
@@ -139,13 +190,13 @@ vrom_intt
 R0
 R1
 !i10b 1
-!s100 9Ead:9;jZKH<Td7mYULSM0
-IP]`XaM:;jajaAX9XW`Jc90
+!s100 O8YE2;[zk9dIzFgF<3PE>0
+IglO5caQLkM=Eg[ET3z`1g3
 R2
 !s105 rom_w_inv_NTT_sv_unit
 S1
 R3
-w1770901495
+Z15 w1771149271
 8../../ram_rom/rom_w_inv_NTT.sv
 F../../ram_rom/rom_w_inv_NTT.sv
 L0 1
@@ -164,13 +215,13 @@ vrom_ntt
 R0
 R1
 !i10b 1
-!s100 ^I7=ZkzLB3ezgOW54Hc140
-I_gjcK09^@6:NYClZi9B8E0
+!s100 YGc5_oGU7`I0Bg8HEHI=]0
+IG>nEI^M?f=F=_;Oo@^P`80
 R2
 !s105 rom_wNTT_sv_unit
 S1
 R3
-w1770901490
+R15
 8../../ram_rom/rom_wNTT.sv
 F../../ram_rom/rom_wNTT.sv
 L0 1
@@ -189,13 +240,13 @@ vtb_ntt_top
 R0
 R1
 !i10b 1
-!s100 O1gNK4k?W78@R;E=Tf`6S2
-Ie77kXA>iALfgSmL4GzPI41
+!s100 VULbC]bzR:FTA6LiZdN;H3
+Iaz?PAJ8Yo^9zYJcXdoNdC3
 R2
 !s105 tb_ntt_top_sv_unit
 S1
 R3
-w1770902276
+w1771336757
 8tb_ntt_top.sv
 Ftb_ntt_top.sv
 L0 1
@@ -203,7 +254,7 @@ R4
 r1
 !s85 0
 31
-!s108 1771037258.000000
+R5
 !s107 tb_ntt_top.sv|
 !s90 -reportprogress|300|-work|work|tb_ntt_top.sv|
 !i113 1

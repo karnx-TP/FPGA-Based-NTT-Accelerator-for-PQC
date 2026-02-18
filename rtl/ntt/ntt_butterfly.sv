@@ -73,9 +73,10 @@ module ntt_butterfly #(
 	logic 						wResEn[0:BF_UNIT-1];
 
 	//ST_BF Signal
-	logic[$clog2(OP_PER_STAGE):0]		rOpCnt;
+	logic[$clog2(OP_PER_STAGE):0]		rOpCnt, rOpCnt1;
 	logic[$clog2(BFST_CNT):0]			rStageCnt, rStageCnt1, wIdxIntt;
-	logic [$clog2(POLY_LEN)-1:0] 		wStride, wDistance, wDistance_INTT;
+	logic								rExceedStage;
+	logic [$clog2(POLY_LEN)-1:0] 		wStride, wDistance, wDistance_INTT,wGroup_Sel,wGroupW_sel,wGroupW_sel_I,wExceed_offset,wExceed_offset_W;
 	logic[BFST_CNT-1:0]					rOpAddr;
 	logic								rStartButterflyOp;
 	logic								rStartButterflyOp1;
@@ -130,7 +131,7 @@ module ntt_butterfly #(
 				end
 			end
 			ST_BF : begin
-				if(wResEn[0] && (rStageCnt == BFST_CNT - 1)) begin
+				if(wResEn[0] && (rStageCnt == BFST_CNT - 1) && (rOpCnt == OP_PER_STAGE-1)) begin
 					if(!rMode)begin
 						wState_next = ST_WB;
 					end else begin
@@ -197,7 +198,7 @@ module ntt_butterfly #(
 	end
 
 	generate
-		for(i = 0;i<POLY_LEN;i=i+1)begin
+		for(i = 0;i<BFST_CNT;i=i+1)begin
 			assign wBR_DataRdCnt[i] = rDataRdCnt[BFST_CNT-i-1]; //Bit reversal Addr
 		end
 	endgenerate
@@ -210,8 +211,8 @@ module ntt_butterfly #(
 		end else if((rState_current == ST_BF && wResEn[0]) || (rState_current == ST_SCALE))begin
 			for (int i = 0; i < BF_UNIT; i++) begin
 				if(rState_current == ST_BF)begin
-					rA[base[i] + offset[i]] <= {1'b0,wRES1[i]};
-					rA[base[i] + offset[i] + wDistance] <= {1'b0,wRES2[i]};
+					rA[base[i] + offset[i] + wGroup_Sel] <= {1'b0,wRES1[i]};
+					rA[base[i] + offset[i] + wDistance + wGroup_Sel] <= {1'b0,wRES2[i]};
 				end else if(rState_current == ST_SCALE && wResEn[0])begin
 					rA[scale_addr[i]] <= {1'b0,wRES1[i]};
 				end
@@ -221,17 +222,19 @@ module ntt_butterfly #(
 	
 //MARK: Butterfly
 	always @(posedge clk ) begin
-		if(rState_current == ST_RD_DATA)begin
+		if(rState_current == ST_RD_DATA || (wResEn[0] && rOpCnt == OP_PER_STAGE-1))begin
 			rOpCnt <= 0;
-		end else if(wResEn[0] && rOpCnt != OP_PER_STAGE-1)begin
+			rOpCnt1 <= 1;
+		end else if(wResEn[0])begin
 			rOpCnt <= rOpCnt + 1;
+			rOpCnt1 <= rOpCnt1 + 1;
 		end
 	end
 	
 	always @(posedge clk ) begin
 		if(rState_current == ST_RD_DATA && wState_next == ST_BF)begin
 			rStartButterflyOp <= 1'b1;
-		end else if(wResEn[0] && (rStageCnt != BFST_CNT - 1) && rState_current == ST_BF)begin
+		end else if(wResEn[0] && (!(rStageCnt == BFST_CNT-1 && rOpCnt == OP_PER_STAGE-1)) && rState_current == ST_BF)begin
 			rStartButterflyOp <= 1'b1;
 		end else begin
 			rStartButterflyOp <= 1'b0;
@@ -242,12 +245,23 @@ module ntt_butterfly #(
 		if(rState_current == ST_RD_DATA)begin
 			rStageCnt <= 0;
 			rStageCnt1 <= 1;
-		end else if(wResEn[0] && rOpCnt == OP_PER_STAGE-1)begin
+		end else if(wResEn[0] && (rOpCnt == OP_PER_STAGE-1))begin
 			rStageCnt <= rStageCnt + 1;
 			rStageCnt1 <= rStageCnt1 + 1;
 		end
+
+		if(rState_current == ST_RD_DATA)begin
+			rExceedStage <= 1'b0;
+		end else if(wResEn[0] && (rStageCnt == $clog2(BF_UNIT*2)-1) && (rOpCnt == OP_PER_STAGE-1))begin
+			rExceedStage <= 1'b1;
+		end
 	end
-	
+
+	//BF Const Input
+	assign wBfuQ = rDataQ;
+	assign wBfuQ_inv = rDataQ_inv;
+	assign wBfuMode = rMode;
+
 	//BF Decoder
 	always @(posedge clk ) begin
 		for (int i = 0; i < BF_UNIT; i++) begin
@@ -255,7 +269,7 @@ module ntt_butterfly #(
 				base[i] <= i << 1; 
 				offset[i] <= i % 1; // Num group
 				offset_i[i] <= i;
-			end else if(wResEn[0] && rOpCnt == OP_PER_STAGE-1)begin
+			end else if(wResEn[0] && (rOpCnt == OP_PER_STAGE-1))begin
 				base[i] <= (i >> rStageCnt1) << (rStageCnt1 + 1); 
 				offset[i] <= i % (1 << rStageCnt1); // Num group
 				offset_i[i] <= (i >> rStageCnt1);
@@ -269,25 +283,35 @@ module ntt_butterfly #(
 		end
 		
 	end
-
-
-	//BF Const Input
-	assign wBfuQ = rDataQ;
-	assign wBfuQ_inv = rDataQ_inv;
-	assign wBfuMode = rMode;
-
-	// BF Input MUX
 	assign wDistance = 1 << rStageCnt; // 1, 2, 4, 8
 	assign wIdxIntt = (BFST_CNT - 1 - rStageCnt);
 	assign wDistance_INTT = 1 << wIdxIntt;
+	assign wGroup_Sel = (rExceedStage) ? wExceed_offset : (rOpCnt << $clog2(BF_UNIT * 2));
+	assign wGroupW_sel = (rExceedStage) ? wExceed_offset_W : 0;
+	assign wGroupW_sel_I = (rExceedStage) ? wExceed_offset_W : (rOpCnt << ($clog2(BF_UNIT)-rStageCnt));
 
+	wire[15:0] wdec_out;
+	assign wExceed_offset = wdec_out[$clog2(POLY_LEN)-1:0];
+	exceed_addr_dec #(
+		.MEM_SIZE((1 << ($clog2(BFST_CNT)+$clog2(OP_PER_STAGE)+3)))
+	) ExeDec
+		(.clk(1'b0), .we(1'b0), .addr({1'b0,rStageCnt,rOpCnt}), .din(), .dout(wdec_out));
+
+	wire[15:0] wdec_out_w;
+	assign wExceed_offset_W = wdec_out_w[$clog2(POLY_LEN)-1:0];
+	exceed_W_addr_dec #(
+		.MEM_SIZE((1 << ($clog2(BFST_CNT)+$clog2(OP_PER_STAGE)+5)))
+	) ExeDec_W
+		(.clk(1'b0), .we(1'b0), .addr({2'b00,rMode,rStageCnt,rOpCnt}), .din(), .dout(wdec_out_w));
+
+	//BF MUX
 	always_comb begin
 		for (int i = 0; i < BF_UNIT; i++) begin
-			wBfuW[i] = (!rMode) ? rW[wDistance + offset[i]] : rW[wDistance_INTT + offset_i[i]];
+			wBfuW[i] = (!rMode) ? rW[wDistance + offset[i] + wGroupW_sel] : rW[wDistance_INTT + offset_i[i] + wGroupW_sel_I];
 
 			if(rState_current == ST_BF)begin
-				wBfuA[i] = rA[base[i] + offset[i]];
-				wBfuB[i] = rA[base[i] + offset[i] + wDistance];
+				wBfuA[i] = rA[base[i] + offset[i] + wGroup_Sel];
+				wBfuB[i] = rA[base[i] + offset[i] + wDistance + wGroup_Sel];
 			end else if(rState_current == ST_SCALE) begin
 				wBfuA[i] = rA[scale_addr[i]];
 				wBfuB[i] = N_INV_M;

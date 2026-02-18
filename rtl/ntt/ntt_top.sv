@@ -17,6 +17,7 @@ module NTT_top #(
 	parameter DATA_WIDTH = 13,
 	parameter ADDR_WIDTH = 11,
 	parameter POLY_LEN = 16,
+	parameter N_INV_M = 512,
 	parameter BF_UNIT = 8,
 	parameter RAM_WORD_LEN = 16
 ) (
@@ -139,7 +140,8 @@ module NTT_top #(
 		.POLY_LEN(POLY_LEN),
 		.DATA_WIDTH(DATA_WIDTH),
 		.ADDR_WIDTH(ADDR_WIDTH),
-		.BF_UNIT(BF_UNIT)
+		.BF_UNIT(BF_UNIT),
+		.N_INV_M(N_INV_M)
 	) uNTT (
 		.clk(clk),
 		.rstB(rstB),
