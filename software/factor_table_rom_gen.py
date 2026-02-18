@@ -4,9 +4,39 @@ import sympy
 import math
 import mont
 from ntt import bit_reversal
+import sys
 
-Test_N = 16
+#MARK: Parameter
+
+Test_N = 32
 q = 7681
+output_path_NTT = "../rtl/ram_rom/rom_wNTT.sv"
+output_path_INV_NTT = "../rtl/ram_rom/rom_w_inv_NTT.sv"
+format_file = "./rom_format/rom8x1024.sv"
+
+if len(sys.argv) >= 6:
+    # The first argument is sys.argv[0] (the script name)
+    # sys.argv[1] is the first actual argument
+	Test_N = int(sys.argv[1])
+	q = int(sys.argv[2])
+	output_path_NTT = sys.argv[3]
+	output_path_INV_NTT = sys.argv[4]
+	format_file = sys.argv[5]
+
+	print(f"{Test_N=}")
+	print(f"{q=}")
+	print(f"{output_path_NTT=}")
+	print(f"{output_path_INV_NTT=}")
+	print(f"{format_file=}")
+else:
+	print("Required more Arg : Used Default Arg")
+
+
+
+
+
+
+#MARK: Factor Calc
 n = Test_N
 q_inv = (-mont.modInverse(q,2**13))%(2**13)
 print("n,q =",n,q)
@@ -36,7 +66,8 @@ for p in phi_list:
 w_inv = mont.modInverse(w,q)
 n_inv = mont.modInverse(n,q)
 phi_inv = mont.modInverse(phi,q)
-print("(w,w_inv,n_inv) =",(w,w_inv,n_inv))
+n_inv_mont = (n_inv*(2**13))%q
+print("(w,w_inv,n_inv) =",(w,w_inv,n_inv),n_inv_mont)
 print("phi,phi_inv =",phi,phi_inv)
 print("Check Mod Inverse Correctness = ",(w*w_inv)%q, (n*n_inv)%q, (phi*phi_inv)%q)
 power_table_ntt = [0]
@@ -48,33 +79,19 @@ for i in range(int(math.log2(Test_N))):
 # print(power_table_ntt)
 power_table_inv_ntt = bit_reversal([int(x) for x in range(Test_N)],Test_N)
 factor_table_ntt = [mont.mont_transform((phi**x)%q,2**13,q) for x in power_table_ntt]
-print(power_table_ntt,power_table_inv_ntt)
+# print(power_table_ntt,power_table_inv_ntt)
 print(factor_table_ntt)
 factor_table_inv_ntt = [mont.mont_transform((phi_inv**int(x))%q,2**13,q) for x in power_table_inv_ntt]
 print(factor_table_inv_ntt)
-print(len(factor_table_ntt),len(factor_table_inv_ntt))
+# print(len(factor_table_ntt),len(factor_table_inv_ntt))
 
-#GEN ROM .sv
-
-output_path_NTT = "../rtl/ram_rom/rom_wNTT.sv"
-output_path_INV_NTT = "../rtl/ram_rom/rom_w_inv_NTT.sv"
-format_file = "./rom_format/rom8x1024.sv"
-mode = 0
-
-# print(hex_string_prog)
-rom_depth = Test_N
-# for word_addr in range(rom_depth):
-# 	if mode == 0:
-# 		print(f"ram[{word_addr}*2] = 8'h{factor_table_ntt[word_addr]};")
-# 	else :
-# 		print(f"ram[{word_addr}*2] = 8'h{factor_table_inv_ntt[word_addr]};")
+#MARK: GEN ROM .sv
 
 with open(f'{format_file}', 'r') as format:
 	format_list = [line.rstrip() for line in format]
-# print(format_list[22])
 
+rom_depth = Test_N
 
-write_rom = 0
 name = "rom_ntt"
 output_path = output_path_NTT
 with open(f'{output_path}', 'w') as f:
@@ -100,3 +117,5 @@ with open(f'{output_path}', 'w') as f:
 			for word_addr in range(rom_depth):
 				code_rom = f"\t\trom[{word_addr}] = {factor_table_inv_ntt[word_addr]};"
 				f.write(code_rom + "\n")
+
+print("\nFactor ROM Gen : Done")

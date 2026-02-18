@@ -386,7 +386,7 @@ def full_fast_ntt(f_br,q,N,factor_table):
 				start_time = time.perf_counter()
 				w_odd = factor_table[idx]
 				j = k+pair
-				# print(i,m,k,j,idx)
+				# print(i,m,k,j,idx,w_odd)
 				# T = (w_odd*f[j])%q
 
 				#Montgomery mult mod\
@@ -427,7 +427,7 @@ def full_fast_Intt(f_br,q,N,N_inv,factor_table):
 			for k in range(m,N,mem): # Loop to other group
 				w_odd = factor_table[idx]
 				j = k+pair
-				# print(i,m,k,j,idx,w_odd)
+				print(i,m,k,j,idx,w_odd)
 
 				# print("In",f[k],f[j],w_odd,q,q_inv)
 				t0 = f[k] + f[j]
@@ -443,7 +443,9 @@ def full_fast_Intt(f_br,q,N,N_inv,factor_table):
 				f[j] = T
 				# print("Out",f[k],f[j])
 				idx += 1
-		# print(f_br)
+		print(f_br)
+	# print((f*N_inv)%q)
+	# print("Ninv = ",N_inv)
 	return (f*N_inv)%q
 
 
@@ -467,7 +469,7 @@ def main():
 	global butterfly_test_Intt_mat
 	global w_inv_odd
 
-	Test_N = 16
+	Test_N = 64
 	const = NIST_PQC_CONST("Test")
 	if const == (-1,-1):
 		print("Wrong method")
@@ -622,7 +624,7 @@ def main():
 	N_inv = modInverse(Test_N,q)
 	f_br = bit_reversal(f,Test_N)
 	g_br = bit_reversal(g,Test_N)
-	# print("bit reversed",f_br)
+	print("bit reversed",f_br)
 
 	#Generate Butterfly Twiddle Factor table
 	power_table_ntt = [0]

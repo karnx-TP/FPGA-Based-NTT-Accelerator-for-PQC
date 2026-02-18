@@ -57,6 +57,7 @@ if {$::dispatch::connected} {
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param general.usePosixSpawnForFork 1
+set_param chipscope.maxJobs 4
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z010clg400-1
 
@@ -69,11 +70,14 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo c:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado/NTT/NTT.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
+set_property generic {POLY_LEN=32 N_INV_M=256} [current_fileset]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib -sv {
   C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ram_rom/bram_dp_word.sv
   C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/butterfly_unit.sv
+  C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ram_rom/exceed_W_addr_dec.sv
+  C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ram_rom/exceed_addr_dec.sv
   C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/mont_inv_transform.sv
   C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv
   C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ram_rom/rom_wNTT.sv

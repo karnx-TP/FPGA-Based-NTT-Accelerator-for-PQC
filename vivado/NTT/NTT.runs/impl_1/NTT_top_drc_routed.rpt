@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date         : Fri Feb 13 19:38:31 2026
+| Date         : Wed Feb 18 12:32:41 2026
 | Host         : LAPTOP-GM1L3F93 running 64-bit major release  (build 9200)
 | Command      : report_drc -file NTT_top_drc_routed.rpt -pb NTT_top_drc_routed.pb -rpx NTT_top_drc_routed.rpx
 | Design       : NTT_top

@@ -3,8 +3,8 @@
 # SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
 # IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
 # SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-# Start of session at: Fri Feb 13 19:36:12 2026
-# Process ID         : 37000
+# Start of session at: Wed Feb 18 12:28:16 2026
+# Process ID         : 46804
 # Current directory  : C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado/NTT/NTT.runs/synth_1
 # Command line       : vivado.exe -log NTT_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source NTT_top.tcl
 # Log file           : C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado/NTT/NTT.runs/synth_1/NTT_top.vds
@@ -17,11 +17,12 @@
 # CPU Physical cores : 8
 # CPU Logical cores  : 16
 # Host memory        : 33414 MB
-# Swap memory        : 2147 MB
-# Total Virtual      : 35562 MB
-# Available Virtual  : 9492 MB
+# Swap memory        : 4613 MB
+# Total Virtual      : 38028 MB
+# Available Virtual  : 4910 MB
 #-----------------------------------------------------------
 source NTT_top.tcl -notrace
+create_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 608.426 ; gain = 222.043
 Command: read_checkpoint -auto_incremental -incremental C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado/NTT/NTT.srcs/utils_1/imports/synth_1/NTT_top.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado/NTT/NTT.srcs/utils_1/imports/synth_1/NTT_top.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -30,50 +31,33 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Device 21-403] Loading part xc7z010clg400-1
-INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
-INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 8540
+INFO: [Synth 8-7075] Helper process launched with PID 46748
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1363.703 ; gain = 541.500
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1362.941 ; gain = 540.801
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'NTT_top' [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_top.sv:8]
-INFO: [Synth 8-155] case statement is not full and has no default [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_top.sv:71]
-INFO: [Synth 8-155] case statement is not full and has no default [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_top.sv:98]
+	Parameter POLY_LEN bound to: 32 - type: integer 
+	Parameter N_INV_M bound to: 256 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_top.sv:72]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_top.sv:99]
 INFO: [Synth 8-6157] synthesizing module 'ntt_butterfly' [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:11]
 	Parameter DATA_WIDTH bound to: 13 - type: integer 
 	Parameter ADDR_WIDTH bound to: 11 - type: integer 
-	Parameter POLY_LEN bound to: 16 - type: integer 
+	Parameter POLY_LEN bound to: 32 - type: integer 
 	Parameter BF_UNIT bound to: 8 - type: integer 
-WARNING: [Synth 8-324] index -1 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index 4 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index -2 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index 5 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index -3 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index 6 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index -4 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index 7 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index -5 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index 8 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index -6 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index 9 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index -7 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index 10 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index -8 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index 11 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index -9 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index 12 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index -10 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index 13 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index -11 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index 14 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index -12 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
-WARNING: [Synth 8-324] index 15 out of range [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:201]
+	Parameter N_INV_M bound to: 256 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'butterfly_unit' [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/butterfly_unit.sv:8]
 INFO: [Synth 8-6157] synthesizing module 'mont_InvTF_unit' [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/mont_inv_transform.sv:9]
 INFO: [Synth 8-6155] done synthesizing module 'mont_InvTF_unit' (0#1) [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/mont_inv_transform.sv:9]
 INFO: [Synth 8-6155] done synthesizing module 'butterfly_unit' (0#1) [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/butterfly_unit.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'exceed_addr_dec' [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ram_rom/exceed_addr_dec.sv:1]
+	Parameter MEM_SIZE bound to: 128 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'exceed_addr_dec' (0#1) [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ram_rom/exceed_addr_dec.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'exceed_W_addr_dec' [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ram_rom/exceed_W_addr_dec.sv:1]
+	Parameter MEM_SIZE bound to: 512 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'exceed_W_addr_dec' (0#1) [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ram_rom/exceed_W_addr_dec.sv:1]
 INFO: [Synth 8-6155] done synthesizing module 'ntt_butterfly' (0#1) [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:11]
 INFO: [Synth 8-6157] synthesizing module 'bram_dp_word' [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ram_rom/bram_dp_word.sv:7]
 	Parameter DEPTH bound to: 256 - type: integer 
@@ -86,92 +70,93 @@ INFO: [Synth 8-6155] done synthesizing module 'rom_intt' (0#1) [C:/FPGA/PQC-Hard
 INFO: [Synth 8-6155] done synthesizing module 'NTT_top' (0#1) [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_top.sv:8]
 WARNING: [Synth 8-3936] Found unconnected internal register 'rX_reg' and it is trimmed from '26' to '13' bits. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/mont_inv_transform.sv:72]
 WARNING: [Synth 8-3848] Net rAdd_sub in module/entity butterfly_unit does not have driver. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/butterfly_unit.sv:38]
-WARNING: [Synth 8-6014] Unused sequential element rReadDataStart_reg was removed.  [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:175]
-WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:214]
+WARNING: [Synth 8-6014] Unused sequential element rReadDataStart_reg was removed.  [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:176]
+WARNING: [Synth 8-6014] Unused sequential element rOpCnt1_reg was removed.  [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:227]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:215]
 	1: RAM has multiple writes via different ports in same process. If RAM inferencing intended, write to one port per process. 
 	2: Invalid write to RAM. 
 	3: Invalid write to RAM. 
 	4: Invalid write to RAM. 
 	5: Unable to determine number of words or word size in RAM. 
 	6: No valid clock found for write to RAM. 
-WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:214]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:215]
 	1: RAM has multiple writes via different ports in same process. If RAM inferencing intended, write to one port per process. 
 	2: Invalid write to RAM. 
 	3: Invalid write to RAM. 
 	4: Invalid write to RAM. 
 	5: Unable to determine number of words or word size in RAM. 
 	6: No valid clock found for write to RAM. 
-WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:214]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:215]
 	1: RAM has multiple writes via different ports in same process. If RAM inferencing intended, write to one port per process. 
 	2: Invalid write to RAM. 
 	3: Invalid write to RAM. 
 	4: Invalid write to RAM. 
 	5: Unable to determine number of words or word size in RAM. 
 	6: No valid clock found for write to RAM. 
-WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:214]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:215]
 	1: RAM has multiple writes via different ports in same process. If RAM inferencing intended, write to one port per process. 
 	2: Invalid write to RAM. 
 	3: Invalid write to RAM. 
 	4: Invalid write to RAM. 
 	5: Unable to determine number of words or word size in RAM. 
 	6: No valid clock found for write to RAM. 
-WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:214]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:215]
 	1: RAM has multiple writes via different ports in same process. If RAM inferencing intended, write to one port per process. 
 	2: Invalid write to RAM. 
 	3: Invalid write to RAM. 
 	4: Invalid write to RAM. 
 	5: Unable to determine number of words or word size in RAM. 
 	6: No valid clock found for write to RAM. 
-WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:214]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:215]
 	1: RAM has multiple writes via different ports in same process. If RAM inferencing intended, write to one port per process. 
 	2: Invalid write to RAM. 
 	3: Invalid write to RAM. 
 	4: Invalid write to RAM. 
 	5: Unable to determine number of words or word size in RAM. 
 	6: No valid clock found for write to RAM. 
-WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:214]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:215]
 	1: RAM has multiple writes via different ports in same process. If RAM inferencing intended, write to one port per process. 
 	2: Invalid write to RAM. 
 	3: Invalid write to RAM. 
 	4: Invalid write to RAM. 
 	5: Unable to determine number of words or word size in RAM. 
 	6: No valid clock found for write to RAM. 
-WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:216]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:217]
 	1: Invalid write to RAM. 
 	2: Invalid write to RAM. 
 	3: Unable to determine number of words or word size in RAM. 
 	4: No valid clock found for write to RAM. 
-WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:216]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:217]
 	1: Invalid write to RAM. 
 	2: Invalid write to RAM. 
 	3: Unable to determine number of words or word size in RAM. 
 	4: No valid clock found for write to RAM. 
-WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:216]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:217]
 	1: Invalid write to RAM. 
 	2: Invalid write to RAM. 
 	3: Unable to determine number of words or word size in RAM. 
 	4: No valid clock found for write to RAM. 
-WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:216]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:217]
 	1: Invalid write to RAM. 
 	2: Invalid write to RAM. 
 	3: Unable to determine number of words or word size in RAM. 
 	4: No valid clock found for write to RAM. 
-WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:216]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:217]
 	1: Invalid write to RAM. 
 	2: Invalid write to RAM. 
 	3: Unable to determine number of words or word size in RAM. 
 	4: No valid clock found for write to RAM. 
-WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:216]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:217]
 	1: Invalid write to RAM. 
 	2: Invalid write to RAM. 
 	3: Unable to determine number of words or word size in RAM. 
 	4: No valid clock found for write to RAM. 
-WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:216]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:217]
 	1: Invalid write to RAM. 
 	2: Invalid write to RAM. 
 	3: Unable to determine number of words or word size in RAM. 
 	4: No valid clock found for write to RAM. 
-WARNING: [Synth 8-4767] Trying to implement RAM 'rA_reg' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:290]
+WARNING: [Synth 8-4767] Trying to implement RAM 'rA_reg' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:314]
 Reason is one or more of the following :
 	1: RAM has too many ports (16). Maximum supported = 16. 
 	2: RAM has too many ports (16). Maximum supported = 16. 
@@ -213,19 +198,39 @@ WARNING: [Synth 8-7129] Port din[3] in module rom_ntt is either unconnected or h
 WARNING: [Synth 8-7129] Port din[2] in module rom_ntt is either unconnected or has no load
 WARNING: [Synth 8-7129] Port din[1] in module rom_ntt is either unconnected or has no load
 WARNING: [Synth 8-7129] Port din[0] in module rom_ntt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clk in module exceed_W_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port we in module exceed_W_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[7] in module exceed_W_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[6] in module exceed_W_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[5] in module exceed_W_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[4] in module exceed_W_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[3] in module exceed_W_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[2] in module exceed_W_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[1] in module exceed_W_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[0] in module exceed_W_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clk in module exceed_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port we in module exceed_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[7] in module exceed_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[6] in module exceed_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[5] in module exceed_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[4] in module exceed_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[3] in module exceed_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[2] in module exceed_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[1] in module exceed_addr_dec is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[0] in module exceed_addr_dec is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1508.887 ; gain = 686.684
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1523.773 ; gain = 701.633
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1508.887 ; gain = 686.684
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1523.773 ; gain = 701.633
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1508.887 ; gain = 686.684
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1523.773 ; gain = 701.633
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.051 . Memory (MB): peak = 1508.887 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.071 . Memory (MB): peak = 1523.773 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -234,97 +239,98 @@ Parsing XDC File [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado
 Finished Parsing XDC File [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado/NTT/NTT.srcs/constrs_1/new/conxdc.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1570.965 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1595.352 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 1570.965 ; gain = 0.000
-INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
-INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 1595.352 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1570.965 ; gain = 748.762
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1595.352 ; gain = 773.211
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1570.965 ; gain = 748.762
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1595.352 ; gain = 773.211
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1570.965 ; gain = 748.762
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1595.352 ; gain = 773.211
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-802] inferred FSM for state register 'rState_current_reg' in module 'butterfly_unit'
-WARNING: [Synth 8-3936] Found unconnected internal register 'rDataRdCnt1_reg' and it is trimmed from '5' to '4' bits. [C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/rtl/ntt/ntt_butterfly.sv:191]
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-                  STIDLE |                        000000100 |                             0000
-             ST_NTT_MUL0 |                        000010000 |                             0001
-             ST_NTT_MUL1 |                        000001000 |                             0010
-          ST_NTT_ADD_SUB |                        000000001 |                             0011
-              ST_NTT_OUT |                        000000010 |                             0100
-         ST_INTT_ADD_SUB |                        000100000 |                             0101
-            ST_INTT_MUL0 |                        100000000 |                             0110
-            ST_INTT_MUL1 |                        001000000 |                             0111
-             ST_INTT_OUT |                        010000000 |                             1000
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'rState_current_reg' using encoding 'one-hot' in module 'butterfly_unit'
-INFO: [Synth 8-3971] The signal "bram_dp_word:/ram_reg" was recognized as a true dual port RAM template.
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1570.965 ; gain = 748.762
+Start Preparing Guide Design
 ---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Doing Graph Differ : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1595.352 ; gain = 773.211
+---------------------------------------------------------------------------------
+NTT_top__GC0ntt_butterfly__GB4ntt_butterfly__GB3ntt_butterfly__GB2ntt_butterfly__GB1ntt_butterfly__GB0---------------------------------------------------------------------------------
+Finished Preparing Guide Design : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1595.352 ; gain = 773.211
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1595.352 ; gain = 773.211
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Mimic Skeleton from Reference
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Mimic Skeleton from Reference : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1595.352 ; gain = 773.211
+---------------------------------------------------------------------------------
+
+
+Incremental Synthesis Report Summary:
+
+1. Incremental synthesis run: yes
+
+   Stitch points used : changed
+
+
+2. Change Summary
+
+Report Incremental Modules: 
++-+----------------+------------+----------+----------+
+| |Changed Modules |Replication |Instances |Changed % |
++-+----------------+------------+----------+----------+
++-+----------------+------------+----------+----------+
+
+
+   Full Design Size (number of cells) : 96551
+   Resynthesis Design Size (number of cells) : 0
+   Resynth % : 0.0000,  Reuse % : 100.0000
+
+3. Reference Checkpoint Information
+
++----------------------------------------------------------------------------------------------------------------------------------+
+| DCP Location:  | C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado/NTT/NTT.srcs/utils_1/imports/synth_1/NTT_top.dcp |
++----------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------+------------------------------+
+|         DCP Information        |             Value            |
++--------------------------------+------------------------------+
+| Vivado Version                 |                    v2025.2 |
+| DCP State                      |                              |
++--------------------------------+------------------------------+
+
+
+
+Report RTL Partitions: 
++------+---------------------------+------------+----------+
+|      |RTL Partition              |Replication |Instances |
++------+---------------------------+------------+----------+
+|1     |ntt_butterfly__GB0_#REUSE# |           1|         0|
+|2     |ntt_butterfly__GB1_#REUSE# |           1|         0|
+|3     |ntt_butterfly__GB2_#REUSE# |           1|         0|
+|4     |ntt_butterfly__GB3_#REUSE# |           1|         0|
+|5     |ntt_butterfly__GB4_#REUSE# |           1|         0|
+|6     |NTT_top__GC0_#REUSE#       |           1|         0|
++------+---------------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input   32 Bit       Adders := 1     
-	   3 Input   14 Bit       Adders := 24    
-	   4 Input   14 Bit       Adders := 8     
-	   2 Input   14 Bit       Adders := 8     
-	   2 Input   13 Bit       Adders := 32    
-	   2 Input   11 Bit       Adders := 3     
-	   2 Input    5 Bit       Adders := 1     
-	   2 Input    4 Bit       Adders := 18    
-	   3 Input    4 Bit       Adders := 8     
-	   2 Input    3 Bit       Adders := 4     
-	   2 Input    2 Bit       Adders := 1     
-	   2 Input    1 Bit       Adders := 1     
-+---Registers : 
-	               26 Bit    Registers := 8     
-	               16 Bit    Registers := 5     
-	               14 Bit    Registers := 32    
-	               13 Bit    Registers := 108   
-	               11 Bit    Registers := 6     
-	                5 Bit    Registers := 1     
-	                4 Bit    Registers := 32    
-	                3 Bit    Registers := 11    
-	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 75    
-+---RAMs : 
-	               4K Bit	(256 X 16 bit)          RAMs := 1     
-	              208 Bit	(16 X 13 bit)          RAMs := 1     
-+---ROMs : 
-	                    ROMs := 2     
-+---Muxes : 
-	   2 Input  224 Bit        Muxes := 8     
-	   3 Input  224 Bit        Muxes := 1     
-	   2 Input   26 Bit        Muxes := 8     
-	   2 Input   14 Bit        Muxes := 510   
-	   2 Input   13 Bit        Muxes := 137   
-	   2 Input   11 Bit        Muxes := 1     
-	   9 Input    9 Bit        Muxes := 8     
-	   2 Input    9 Bit        Muxes := 32    
-	   2 Input    4 Bit        Muxes := 26    
-	   3 Input    3 Bit        Muxes := 1     
-	   2 Input    3 Bit        Muxes := 2     
-	   2 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 22    
-	   7 Input    1 Bit        Muxes := 6     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -340,253 +346,40 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-DSP Report: Generating DSP rDirectMulModRes0, operation Mode is: A*B.
-DSP Report: operator rDirectMulModRes0 is absorbed into DSP rDirectMulModRes0.
-DSP Report: Generating DSP wR1divR0, operation Mode is: C+(A2*B)'.
-DSP Report: register rX_reg is absorbed into DSP wR1divR0.
-DSP Report: register rXM_reg is absorbed into DSP wR1divR0.
-DSP Report: operator wMul2 is absorbed into DSP wR1divR0.
-DSP Report: operator wR1divR0 is absorbed into DSP wR1divR0.
-DSP Report: Generating DSP rMulResult_reg, operation Mode is: (A*B2)'.
-DSP Report: register rW_reg is absorbed into DSP rMulResult_reg.
-DSP Report: register rMulResult_reg is absorbed into DSP rMulResult_reg.
-DSP Report: operator rMulResult0 is absorbed into DSP rMulResult_reg.
-DSP Report: Generating DSP rDirectMulModRes0, operation Mode is: A*B.
-DSP Report: operator rDirectMulModRes0 is absorbed into DSP rDirectMulModRes0.
-DSP Report: Generating DSP wR1divR0, operation Mode is: C+(A2*B)'.
-DSP Report: register rX_reg is absorbed into DSP wR1divR0.
-DSP Report: register rXM_reg is absorbed into DSP wR1divR0.
-DSP Report: operator wMul2 is absorbed into DSP wR1divR0.
-DSP Report: operator wR1divR0 is absorbed into DSP wR1divR0.
-DSP Report: Generating DSP rMulResult_reg, operation Mode is: (A*B2)'.
-DSP Report: register rW_reg is absorbed into DSP rMulResult_reg.
-DSP Report: register rMulResult_reg is absorbed into DSP rMulResult_reg.
-DSP Report: operator rMulResult0 is absorbed into DSP rMulResult_reg.
-DSP Report: Generating DSP rDirectMulModRes0, operation Mode is: A*B.
-DSP Report: operator rDirectMulModRes0 is absorbed into DSP rDirectMulModRes0.
-DSP Report: Generating DSP wR1divR0, operation Mode is: C+(A2*B)'.
-DSP Report: register rX_reg is absorbed into DSP wR1divR0.
-DSP Report: register rXM_reg is absorbed into DSP wR1divR0.
-DSP Report: operator wMul2 is absorbed into DSP wR1divR0.
-DSP Report: operator wR1divR0 is absorbed into DSP wR1divR0.
-DSP Report: Generating DSP rMulResult_reg, operation Mode is: (A*B2)'.
-DSP Report: register rW_reg is absorbed into DSP rMulResult_reg.
-DSP Report: register rMulResult_reg is absorbed into DSP rMulResult_reg.
-DSP Report: operator rMulResult0 is absorbed into DSP rMulResult_reg.
-DSP Report: Generating DSP rDirectMulModRes0, operation Mode is: A*B.
-DSP Report: operator rDirectMulModRes0 is absorbed into DSP rDirectMulModRes0.
-DSP Report: Generating DSP wR1divR0, operation Mode is: C+(A2*B)'.
-DSP Report: register rX_reg is absorbed into DSP wR1divR0.
-DSP Report: register rXM_reg is absorbed into DSP wR1divR0.
-DSP Report: operator wMul2 is absorbed into DSP wR1divR0.
-DSP Report: operator wR1divR0 is absorbed into DSP wR1divR0.
-DSP Report: Generating DSP rMulResult_reg, operation Mode is: (A*B2)'.
-DSP Report: register rW_reg is absorbed into DSP rMulResult_reg.
-DSP Report: register rMulResult_reg is absorbed into DSP rMulResult_reg.
-DSP Report: operator rMulResult0 is absorbed into DSP rMulResult_reg.
-DSP Report: Generating DSP rDirectMulModRes0, operation Mode is: A*B.
-DSP Report: operator rDirectMulModRes0 is absorbed into DSP rDirectMulModRes0.
-DSP Report: Generating DSP wR1divR0, operation Mode is: C+(A2*B)'.
-DSP Report: register rX_reg is absorbed into DSP wR1divR0.
-DSP Report: register rXM_reg is absorbed into DSP wR1divR0.
-DSP Report: operator wMul2 is absorbed into DSP wR1divR0.
-DSP Report: operator wR1divR0 is absorbed into DSP wR1divR0.
-DSP Report: Generating DSP rMulResult_reg, operation Mode is: (A*B2)'.
-DSP Report: register rW_reg is absorbed into DSP rMulResult_reg.
-DSP Report: register rMulResult_reg is absorbed into DSP rMulResult_reg.
-DSP Report: operator rMulResult0 is absorbed into DSP rMulResult_reg.
-DSP Report: Generating DSP rDirectMulModRes0, operation Mode is: A*B.
-DSP Report: operator rDirectMulModRes0 is absorbed into DSP rDirectMulModRes0.
-DSP Report: Generating DSP wR1divR0, operation Mode is: C+(A2*B)'.
-DSP Report: register rX_reg is absorbed into DSP wR1divR0.
-DSP Report: register rXM_reg is absorbed into DSP wR1divR0.
-DSP Report: operator wMul2 is absorbed into DSP wR1divR0.
-DSP Report: operator wR1divR0 is absorbed into DSP wR1divR0.
-DSP Report: Generating DSP rMulResult_reg, operation Mode is: (A*B2)'.
-DSP Report: register rW_reg is absorbed into DSP rMulResult_reg.
-DSP Report: register rMulResult_reg is absorbed into DSP rMulResult_reg.
-DSP Report: operator rMulResult0 is absorbed into DSP rMulResult_reg.
-DSP Report: Generating DSP rDirectMulModRes0, operation Mode is: A*B.
-DSP Report: operator rDirectMulModRes0 is absorbed into DSP rDirectMulModRes0.
-DSP Report: Generating DSP wR1divR0, operation Mode is: C+(A2*B)'.
-DSP Report: register rX_reg is absorbed into DSP wR1divR0.
-DSP Report: register rXM_reg is absorbed into DSP wR1divR0.
-DSP Report: operator wMul2 is absorbed into DSP wR1divR0.
-DSP Report: operator wR1divR0 is absorbed into DSP wR1divR0.
-DSP Report: Generating DSP rMulResult_reg, operation Mode is: (A*B2)'.
-DSP Report: register rW_reg is absorbed into DSP rMulResult_reg.
-DSP Report: register rMulResult_reg is absorbed into DSP rMulResult_reg.
-DSP Report: operator rMulResult0 is absorbed into DSP rMulResult_reg.
-DSP Report: Generating DSP rDirectMulModRes0, operation Mode is: A*B.
-DSP Report: operator rDirectMulModRes0 is absorbed into DSP rDirectMulModRes0.
-DSP Report: Generating DSP wR1divR0, operation Mode is: C+(A2*B)'.
-DSP Report: register rX_reg is absorbed into DSP wR1divR0.
-DSP Report: register rXM_reg is absorbed into DSP wR1divR0.
-DSP Report: operator wMul2 is absorbed into DSP wR1divR0.
-DSP Report: operator wR1divR0 is absorbed into DSP wR1divR0.
-DSP Report: Generating DSP rMulResult_reg, operation Mode is: (A*B2)'.
-DSP Report: register rW_reg is absorbed into DSP rMulResult_reg.
-DSP Report: register rMulResult_reg is absorbed into DSP rMulResult_reg.
-DSP Report: operator rMulResult0 is absorbed into DSP rMulResult_reg.
-WARNING: [Synth 8-7129] Port we in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addr[10] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addr[9] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addr[8] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addr[7] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addr[6] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addr[5] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addr[4] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[7] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[6] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[5] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[4] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[3] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[2] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[1] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[0] in module rom_intt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port we in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addr[10] in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addr[9] in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addr[8] in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addr[7] in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addr[6] in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addr[5] in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addr[4] in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[7] in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[6] in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[5] in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[4] in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[3] in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[2] in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[1] in module rom_ntt is either unconnected or has no load
-WARNING: [Synth 8-7129] Port din[0] in module rom_ntt is either unconnected or has no load
-INFO: [Synth 8-3971] The signal "ramA/ram_reg" was recognized as a true dual port RAM template.
+WARNING: [Synth 8-7077] IncrSyn: subsequent runs will still be incremental as the reference run was parallel and that data is reused
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 1983.402 ; gain = 1161.199
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1595.352 ; gain = 773.211
 ---------------------------------------------------------------------------------
- Sort Area is  wR1divR0_10 : 0 0 : 1357 1357 : Used 1 time 0
- Sort Area is  wR1divR0_13 : 0 0 : 1357 1357 : Used 1 time 0
- Sort Area is  wR1divR0_16 : 0 0 : 1357 1357 : Used 1 time 0
- Sort Area is  wR1divR0_19 : 0 0 : 1357 1357 : Used 1 time 0
- Sort Area is  wR1divR0_2 : 0 0 : 1357 1357 : Used 1 time 0
- Sort Area is  wR1divR0_7 : 0 0 : 1357 1357 : Used 1 time 0
- Sort Area is  wR1divR0_a : 0 0 : 1357 1357 : Used 1 time 0
- Sort Area is  wR1divR0_d : 0 0 : 1357 1357 : Used 1 time 0
- Sort Area is  rMulResult_reg_11 : 0 0 : 1277 1277 : Used 1 time 0
- Sort Area is  rMulResult_reg_14 : 0 0 : 1277 1277 : Used 1 time 0
- Sort Area is  rMulResult_reg_17 : 0 0 : 1277 1277 : Used 1 time 0
- Sort Area is  rMulResult_reg_1a : 0 0 : 1277 1277 : Used 1 time 0
- Sort Area is  rMulResult_reg_4 : 0 0 : 1277 1277 : Used 1 time 0
- Sort Area is  rMulResult_reg_8 : 0 0 : 1277 1277 : Used 1 time 0
- Sort Area is  rMulResult_reg_b : 0 0 : 1277 1277 : Used 1 time 0
- Sort Area is  rMulResult_reg_e : 0 0 : 1277 1277 : Used 1 time 0
- Sort Area is  rDirectMulModRes0_0 : 0 0 : 1238 1238 : Used 1 time 0
- Sort Area is  rDirectMulModRes0_12 : 0 0 : 1238 1238 : Used 1 time 0
- Sort Area is  rDirectMulModRes0_15 : 0 0 : 1238 1238 : Used 1 time 0
- Sort Area is  rDirectMulModRes0_18 : 0 0 : 1238 1238 : Used 1 time 0
- Sort Area is  rDirectMulModRes0_6 : 0 0 : 1238 1238 : Used 1 time 0
- Sort Area is  rDirectMulModRes0_9 : 0 0 : 1238 1238 : Used 1 time 0
- Sort Area is  rDirectMulModRes0_c : 0 0 : 1238 1238 : Used 1 time 0
- Sort Area is  rDirectMulModRes0_f : 0 0 : 1238 1238 : Used 1 time 0
 ---------------------------------------------------------------------------------
-Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+Start Stitch Unchanged AreaOpt Partitions
 ---------------------------------------------------------------------------------
-
-Block RAM: Preliminary Mapping Report (see note below)
-+------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Module Name | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
-+------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|ramA        | ram_reg    | 256 x 16(READ_FIRST)   | W | R | 256 x 16(READ_FIRST)   | W | R | Port A and B     | 1      | 0      | 
-+------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-
-Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
-
-Distributed RAM: Preliminary Mapping Report (see note below)
-+------------+------------+-----------+----------------------+--------------+
-|Module Name | RTL Object | Inference | Size (Depth x Width) | Primitives   | 
-+------------+------------+-----------+----------------------+--------------+
-|uNTT        | rW_reg     | Implied   | 16 x 13              | RAM32M x 24  | 
-+------------+------------+-----------+----------------------+--------------+
-
-Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
-
-DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
-+----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Module Name     | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
-+----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|mont_InvTF_unit | A*B         | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mont_InvTF_unit | C+(A2*B)'   | 13     | 13     | 26     | -      | 27     | 1    | 0    | 0    | -    | -     | 1    | 0    | 
-|butterfly_unit  | (A*B2)'     | 13     | 13     | -      | -      | 26     | 0    | 1    | -    | -    | -     | 1    | 0    | 
-|mont_InvTF_unit | A*B         | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mont_InvTF_unit | C+(A2*B)'   | 13     | 13     | 26     | -      | 27     | 1    | 0    | 0    | -    | -     | 1    | 0    | 
-|butterfly_unit  | (A*B2)'     | 13     | 13     | -      | -      | 26     | 0    | 1    | -    | -    | -     | 1    | 0    | 
-|mont_InvTF_unit | A*B         | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mont_InvTF_unit | C+(A2*B)'   | 13     | 13     | 26     | -      | 27     | 1    | 0    | 0    | -    | -     | 1    | 0    | 
-|butterfly_unit  | (A*B2)'     | 13     | 13     | -      | -      | 26     | 0    | 1    | -    | -    | -     | 1    | 0    | 
-|mont_InvTF_unit | A*B         | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mont_InvTF_unit | C+(A2*B)'   | 13     | 13     | 26     | -      | 27     | 1    | 0    | 0    | -    | -     | 1    | 0    | 
-|butterfly_unit  | (A*B2)'     | 13     | 13     | -      | -      | 26     | 0    | 1    | -    | -    | -     | 1    | 0    | 
-|mont_InvTF_unit | A*B         | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mont_InvTF_unit | C+(A2*B)'   | 13     | 13     | 26     | -      | 27     | 1    | 0    | 0    | -    | -     | 1    | 0    | 
-|butterfly_unit  | (A*B2)'     | 13     | 13     | -      | -      | 26     | 0    | 1    | -    | -    | -     | 1    | 0    | 
-|mont_InvTF_unit | A*B         | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mont_InvTF_unit | C+(A2*B)'   | 13     | 13     | 26     | -      | 27     | 1    | 0    | 0    | -    | -     | 1    | 0    | 
-|butterfly_unit  | (A*B2)'     | 13     | 13     | -      | -      | 26     | 0    | 1    | -    | -    | -     | 1    | 0    | 
-|mont_InvTF_unit | A*B         | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mont_InvTF_unit | C+(A2*B)'   | 13     | 13     | 26     | -      | 27     | 1    | 0    | 0    | -    | -     | 1    | 0    | 
-|butterfly_unit  | (A*B2)'     | 13     | 13     | -      | -      | 26     | 0    | 1    | -    | -    | -     | 1    | 0    | 
-|mont_InvTF_unit | A*B         | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mont_InvTF_unit | C+(A2*B)'   | 13     | 13     | 26     | -      | 27     | 1    | 0    | 0    | -    | -     | 1    | 0    | 
-|butterfly_unit  | (A*B2)'     | 13     | 13     | -      | -      | 26     | 0    | 1    | -    | -    | -     | 1    | 0    | 
-+----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-
-Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
 ---------------------------------------------------------------------------------
-Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+Finished Stitch Unchanged AreaOpt Partitions : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1595.352 ; gain = 773.211
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1983.402 ; gain = 1161.199
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1773.277 ; gain = 951.137
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 1983.402 ; gain = 1161.199
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start ROM, RAM, DSP, Shift Register and Retiming Reporting
----------------------------------------------------------------------------------
-
-Block RAM: Final Mapping Report
-+------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Module Name | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
-+------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|ramA        | ram_reg    | 256 x 16(READ_FIRST)   | W | R | 256 x 16(READ_FIRST)   | W | R | Port A and B     | 1      | 0      | 
-+------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-
-
-Distributed RAM: Final Mapping Report
-+------------+------------+-----------+----------------------+--------------+
-|Module Name | RTL Object | Inference | Size (Depth x Width) | Primitives   | 
-+------------+------------+-----------+----------------------+--------------+
-|uNTT        | rW_reg     | Implied   | 16 x 13              | RAM32M x 24  | 
-+------------+------------+-----------+----------------------+--------------+
-
----------------------------------------------------------------------------------
-Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1773.426 ; gain = 951.285
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-7052] The timing for the instance ramA/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance ramA/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance uROM_ntt/d_out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance uROM_intt/d_out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+WARNING: [Synth 8-7077] IncrSyn: subsequent runs will still be incremental as the reference run was parallel and that data is reused
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 2067.770 ; gain = 1245.566
+Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1784.996 ; gain = 962.855
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Stitch Unchanged Partitions
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Stitch Unchanged Partitions : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1784.996 ; gain = 962.855
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -594,23 +387,27 @@ Start IO Insertion
 ---------------------------------------------------------------------------------
 Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance ramA/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance ramA/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance uROM_ntt/d_out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance uROM_intt/d_out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2084.379 ; gain = 1262.176
+Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2022.258 ; gain = 1200.117
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2084.379 ; gain = 1262.176
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2022.258 ; gain = 1200.117
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 2084.379 ; gain = 1262.176
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2026.242 ; gain = 1204.102
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -658,48 +455,48 @@ Report Cell Usage:
 |      |Cell     |Count |
 +------+---------+------+
 |1     |BUFG     |     1|
-|2     |CARRY4   |   284|
+|2     |CARRY4   |   350|
 |3     |DSP48E1  |    24|
-|6     |LUT1     |    35|
-|7     |LUT2     |   570|
-|8     |LUT3     |  1381|
-|9     |LUT4     |   602|
-|10    |LUT5     |  1584|
-|11    |LUT6     |  3089|
-|12    |MUXF7    |    60|
-|13    |MUXF8    |    13|
-|14    |RAM32M   |    16|
-|15    |RAM32X1D |     8|
-|16    |RAMB18E1 |     3|
-|19    |FDRE     |  2137|
-|20    |FDSE     |    14|
-|21    |IBUF     |    30|
-|22    |OBUF     |    16|
+|4     |LUT1     |    38|
+|5     |LUT2     |  1085|
+|6     |LUT3     |  2838|
+|7     |LUT4     |  1287|
+|8     |LUT5     |  2407|
+|9     |LUT6     |  6212|
+|10    |MUXF7    |   917|
+|11    |MUXF8    |    14|
+|12    |RAM32M   |    16|
+|13    |RAM32X1D |     8|
+|14    |RAMB18E1 |     3|
+|15    |FDRE     |  2407|
+|16    |FDSE     |    18|
+|17    |IBUF     |    30|
+|18    |OBUF     |    16|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 2084.379 ; gain = 1262.176
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2026.242 ; gain = 1204.102
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 33 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:36 . Memory (MB): peak = 2084.379 ; gain = 1200.098
-Synthesis Optimization Complete : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 2084.379 ; gain = 1262.176
+Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:00:31 . Memory (MB): peak = 2026.242 ; gain = 1132.523
+Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2026.242 ; gain = 1204.102
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.057 . Memory (MB): peak = 2093.582 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 408 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.132 . Memory (MB): peak = 2035.328 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1332 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2097.648 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 2039.035 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 24 instances were transformed.
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 16 instances
   RAM32X1D => RAM32X1D (RAMD32(x2)): 8 instances
 
-Synth Design complete | Checksum: 73e52457
+Synth Design complete | Checksum: 8eb3ffda
 INFO: [Common 17-83] Releasing license: Synthesis
-44 Infos, 93 Warnings, 0 Critical Warnings and 0 Errors encountered.
+40 Infos, 59 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:00:44 . Memory (MB): peak = 2097.648 ; gain = 1482.562
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 2097.648 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 2039.035 ; gain = 1424.102
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 2039.035 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado/NTT/NTT.runs/synth_1/NTT_top.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file NTT_top_utilization_synth.rpt -pb NTT_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Feb 13 19:37:02 2026...
+INFO: [Common 17-206] Exiting Vivado at Wed Feb 18 12:29:11 2026...
