@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date             : Wed Feb 18 12:32:49 2026
+| Date             : Wed Feb 18 17:11:53 2026
 | Host             : LAPTOP-GM1L3F93 running 64-bit major release  (build 9200)
 | Command          : report_power -file NTT_top_power_routed.rpt -pb NTT_top_power_summary_routed.pb -rpx NTT_top_power_routed.rpx
 | Design           : NTT_top
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.205        |
+| Total On-Chip Power (W)  | 0.266        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.113        |
+| Dynamic (W)              | 0.173        |
 | Device Static (W)        | 0.093        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 82.6         |
-| Junction Temperature (C) | 27.4         |
+| Max Ambient (C)          | 81.9         |
+| Junction Temperature (C) | 28.1         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,20 +52,20 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.015 |        3 |       --- |             --- |
-| Slice Logic              |     0.028 |    17791 |       --- |             --- |
-|   LUT as Logic           |     0.025 |    11741 |     17600 |           66.71 |
-|   CARRY4                 |     0.002 |      350 |      4400 |            7.95 |
-|   Register               |    <0.001 |     2425 |     35200 |            6.89 |
-|   LUT as Distributed RAM |    <0.001 |       80 |      6000 |            1.33 |
-|   F7/F8 Muxes            |    <0.001 |      931 |     17600 |            5.29 |
+| Clocks                   |     0.019 |        3 |       --- |             --- |
+| Slice Logic              |     0.047 |    18066 |       --- |             --- |
+|   LUT as Logic           |     0.044 |    11159 |     17600 |           63.40 |
+|   CARRY4                 |     0.002 |      372 |      4400 |            8.45 |
+|   F7/F8 Muxes            |    <0.001 |     1400 |     17600 |            7.95 |
+|   Register               |    <0.001 |     3177 |     35200 |            9.03 |
+|   LUT as Distributed RAM |    <0.001 |      144 |      6000 |            2.40 |
 |   Others                 |     0.000 |       74 |       --- |             --- |
-| Signals                  |     0.042 |    14594 |       --- |             --- |
+| Signals                  |     0.079 |    13370 |       --- |             --- |
 | Block RAM                |     0.004 |      1.5 |        60 |            2.50 |
 | DSPs                     |     0.023 |       24 |        80 |           30.00 |
 | I/O                      |    <0.001 |       46 |       100 |           46.00 |
 | Static Power             |     0.093 |          |           |                 |
-| Total                    |     0.205 |          |           |                 |
+| Total                    |     0.266 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,8 +75,8 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.116 |       0.112 |      0.004 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.005 |       0.000 |      0.005 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.176 |       0.172 |      0.004 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.006 |       0.000 |      0.006 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
@@ -151,11 +151,11 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| NTT_top                  |     0.113 |
-|   ramA                   |     0.004 |
-|   uNTT                   |     0.105 |
-|     genblk2[0].u_bf_unit |     0.008 |
-|       mont_inv_inst      |     0.004 |
+| NTT_top                  |     0.173 |
+|   ramA                   |     0.003 |
+|   uNTT                   |     0.166 |
+|     genblk2[0].u_bf_unit |     0.007 |
+|       mont_inv_inst      |     0.003 |
 |     genblk2[1].u_bf_unit |     0.008 |
 |       mont_inv_inst      |     0.003 |
 |     genblk2[2].u_bf_unit |     0.008 |
@@ -163,13 +163,13 @@ Table of Contents
 |     genblk2[3].u_bf_unit |     0.008 |
 |       mont_inv_inst      |     0.003 |
 |     genblk2[4].u_bf_unit |     0.008 |
-|       mont_inv_inst      |     0.004 |
+|       mont_inv_inst      |     0.003 |
 |     genblk2[5].u_bf_unit |     0.008 |
 |       mont_inv_inst      |     0.003 |
 |     genblk2[6].u_bf_unit |     0.008 |
 |       mont_inv_inst      |     0.003 |
-|     genblk2[7].u_bf_unit |     0.007 |
-|       mont_inv_inst      |     0.003 |
+|     genblk2[7].u_bf_unit |     0.008 |
+|       mont_inv_inst      |     0.004 |
 +--------------------------+-----------+
 
 

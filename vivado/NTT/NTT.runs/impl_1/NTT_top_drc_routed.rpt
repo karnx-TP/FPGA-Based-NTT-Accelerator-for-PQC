@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date         : Wed Feb 18 12:32:41 2026
+| Date         : Wed Feb 18 17:11:42 2026
 | Host         : LAPTOP-GM1L3F93 running 64-bit major release  (build 9200)
 | Command      : report_drc -file NTT_top_drc_routed.rpt -pb NTT_top_drc_routed.pb -rpx NTT_top_drc_routed.rpx
 | Design       : NTT_top
@@ -24,13 +24,13 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max checks: <unlimited>
-             Checks found: 75
+             Checks found: 76
 +--------+------------------+----------------------------+--------+
 | Rule   | Severity         | Description                | Checks |
 +--------+------------------+----------------------------+--------+
 | NSTD-1 | Critical Warning | Unspecified I/O Standard   | 1      |
 | UCIO-1 | Critical Warning | Unconstrained Logical Port | 1      |
-| DPIP-1 | Warning          | Input pipelining           | 40     |
+| DPIP-1 | Warning          | Input pipelining           | 41     |
 | DPOP-1 | Warning          | PREG Output pipelining     | 16     |
 | DPOP-2 | Warning          | MREG Output pipelining     | 16     |
 | ZPS7-1 | Warning          | PS7 block required         | 1      |
@@ -237,15 +237,20 @@ Related violations: <none>
 
 DPIP-1#38 Warning
 Input pipelining  
-DSP uNTT/genblk2[7].u_bf_unit/mont_inv_inst/wR1divR0 input uNTT/genblk2[7].u_bf_unit/mont_inv_inst/wR1divR0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP uNTT/genblk2[7].u_bf_unit/mont_inv_inst/wR1divR0 input uNTT/genblk2[7].u_bf_unit/mont_inv_inst/wR1divR0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-1#39 Warning
 Input pipelining  
-DSP uNTT/genblk2[7].u_bf_unit/mont_inv_inst/wR1divR0 input uNTT/genblk2[7].u_bf_unit/mont_inv_inst/wR1divR0/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP uNTT/genblk2[7].u_bf_unit/mont_inv_inst/wR1divR0 input uNTT/genblk2[7].u_bf_unit/mont_inv_inst/wR1divR0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-1#40 Warning
+Input pipelining  
+DSP uNTT/genblk2[7].u_bf_unit/mont_inv_inst/wR1divR0 input uNTT/genblk2[7].u_bf_unit/mont_inv_inst/wR1divR0/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#41 Warning
 Input pipelining  
 DSP uNTT/genblk2[7].u_bf_unit/rMulResult_reg input uNTT/genblk2[7].u_bf_unit/rMulResult_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>

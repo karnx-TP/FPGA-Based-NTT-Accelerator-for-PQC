@@ -70,7 +70,7 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo c:/FPGA/PQC-Hardware/FPGA-Based-NTT-Accelerator-for-PQC/vivado/NTT/NTT.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
-set_property generic {POLY_LEN=32 N_INV_M=256} [current_fileset]
+set_property generic {POLY_LEN=64 N_INV_M=128} [current_fileset]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib -sv {

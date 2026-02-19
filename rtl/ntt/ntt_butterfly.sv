@@ -54,7 +54,8 @@ module ntt_butterfly #(
 	logic[BFST_CNT-1:0]			wBR_DataRdCnt;
 	logic[BFST_CNT:0]			rDataRdCnt1; //0->(N-1)
 	
-	logic signed [DATA_WIDTH:0]		rA [0:POLY_LEN-1];
+	(* ram_style = "distributed" *) logic signed [DATA_WIDTH:0]		rA [0:POLY_LEN-1];
+	logic signed [DATA_WIDTH:0]		rA_temp [0:(2*BF_UNIT)-1];
 	logic[DATA_WIDTH-1:0]				rW [0:POLY_LEN-1];
 
 	//Butterfly Unit Wire
@@ -76,17 +77,22 @@ module ntt_butterfly #(
 	logic[$clog2(OP_PER_STAGE):0]		rOpCnt, rOpCnt1;
 	logic[$clog2(BFST_CNT):0]			rStageCnt, rStageCnt1, wIdxIntt;
 	logic								rExceedStage;
-	logic [$clog2(POLY_LEN)-1:0] 		wStride, wDistance, wDistance_INTT,wGroup_Sel,wGroupW_sel,wGroupW_sel_I,wExceed_offset,wExceed_offset_W;
+	logic [$clog2(POLY_LEN)-1:0] 		wStride, wDistance,rDistance, wDistance_INTT,wGroup_Sel,rGroup_Sel,wGroupW_sel,wGroupW_sel_I,wExceed_offset,wExceed_offset_W;
 	logic[BFST_CNT-1:0]					rOpAddr;
 	logic								rStartButterflyOp;
 	logic								rStartButterflyOp1;
 	logic								wBFOutEn;
+	logic[1:0] 							rBFwrABank;
+	logic[$clog2(BF_UNIT):0]			rAbankCounter;
 
 	//BF MUX Decoder
 	logic [$clog2(POLY_LEN)-1:0] base [0:BF_UNIT-1];
+	logic [$clog2(POLY_LEN)-1:0] base1 [0:BF_UNIT-1];
 	logic [$clog2(POLY_LEN)-1:0] offset_i [0:BF_UNIT-1];
 	logic [$clog2(POLY_LEN)-1:0] offset [0:BF_UNIT-1];
+	logic [$clog2(POLY_LEN)-1:0] offset1 [0:BF_UNIT-1];
 	logic [$clog2(POLY_LEN)-1:0] scale_addr[0:BF_UNIT-1];
+	logic [$clog2(POLY_LEN)-1:0] scale_addr1[0:BF_UNIT-1];
 
 	//ST_WB
 	logic [BFST_CNT-1:0] 				rWrCnt;
@@ -205,20 +211,47 @@ module ntt_butterfly #(
 	
 	assign ramAddr_A = (rState_current == ST_WB) ?  rStartAddrA + rWrCnt :
 													rStartAddrA + wBR_DataRdCnt;
+
+	always @(posedge clk ) begin
+		if((rState_current == ST_BF && wResEn[0])) begin
+			rAbankCounter <= 0;
+			base1 <= base;
+			offset1 <= offset;
+			scale_addr1 <= scale_addr;
+			rGroup_Sel <= wGroup_Sel;
+			rDistance <= wDistance;
+		end else begin
+			rAbankCounter <= rAbankCounter + 1;
+		end
+	end
+
+	always @(posedge clk ) begin
+		if(!rstB)begin
+			rBFwrABank <= 0;
+		end else if((rState_current == ST_BF && wResEn[0])) begin
+			rBFwrABank[0] <= 1'b1;
+		end  else if((rState_current == ST_SCALE && wResEn[0])) begin
+			rBFwrABank[1] <= 1'b1;
+		end else if(rAbankCounter == BF_UNIT-1) begin
+			rBFwrABank <= 0;
+		end
+	end
+
 	always @(posedge clk ) begin
 		if(rState_current == ST_RD_DATA)begin
 			rA[rDataRdCnt1] <= $signed(ramDataOut_A);
-		end else if((rState_current == ST_BF && wResEn[0]) || (rState_current == ST_SCALE))begin
-			for (int i = 0; i < BF_UNIT; i++) begin
-				if(rState_current == ST_BF)begin
-					rA[base[i] + offset[i] + wGroup_Sel] <= {1'b0,wRES1[i]};
-					rA[base[i] + offset[i] + wDistance + wGroup_Sel] <= {1'b0,wRES2[i]};
-				end else if(rState_current == ST_SCALE && wResEn[0])begin
-					rA[scale_addr[i]] <= {1'b0,wRES1[i]};
-				end
+		end else if((|rBFwrABank) && (!rAbankCounter[$clog2(BF_UNIT)]))begin
+			if(rBFwrABank[0])begin
+				rA[base1[rAbankCounter] + offset1[rAbankCounter] + rGroup_Sel] <= rA_temp[rAbankCounter];
+				rA[base1[rAbankCounter] + offset1[rAbankCounter] + rDistance + rGroup_Sel] <= rA_temp[rAbankCounter+8];
+			end else if(rBFwrABank[1])begin
+				rA[scale_addr[rAbankCounter]] <= rA_temp[rAbankCounter];
 			end
 		end
 	end
+	
+
+	
 	
 //MARK: Butterfly
 	always @(posedge clk ) begin
@@ -275,10 +308,8 @@ module ntt_butterfly #(
 				offset_i[i] <= (i >> rStageCnt1);
 			end
 
-			if(wState_next == ST_SCALE && rState_current != ST_SCALE)begin
-				scale_addr[i] <= i;
-			end else if(rState_current == ST_SCALE && wResEn[0]) begin
-				scale_addr[i] <= i + ((rScaleCnt+1) << 3);
+			if(rState_current == ST_SCALE && rAbankCounter == BF_UNIT-1) begin
+				scale_addr[i] <= i + ((rScaleCnt) << 3);
 			end
 		end
 		
@@ -353,10 +384,23 @@ module ntt_butterfly #(
 		end
 	endgenerate
 
+	always @(posedge clk ) begin
+		if((rState_current == ST_BF || rState_current == ST_SCALE) && wResEn[0])begin
+			for (int i = 0; i < BF_UNIT; i++) begin
+				if(rState_current == ST_BF)begin
+					rA_temp[i] <= {1'b0,wRES1[i]};
+					rA_temp[i+8] <= {1'b0,wRES2[i]};
+				end else if(rState_current == ST_SCALE)begin
+					rA_temp[i] <= wRES1[i];
+				end
+			end
+		end
+	end
+
 
 //MARK: Scale
 	always @(posedge clk ) begin
-		rDirectMulMod = (wState_next == ST_SCALE && rState_current != ST_SCALE) || (rState_current == ST_SCALE && wResEn[0]);
+		rDirectMulMod = (rState_current == ST_SCALE && rAbankCounter == BF_UNIT-1);
 		
 		if(wState_next == ST_SCALE && rState_current != ST_SCALE)begin
 			rScaleCnt <= 0;

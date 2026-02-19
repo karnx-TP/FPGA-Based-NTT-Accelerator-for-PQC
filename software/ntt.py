@@ -386,7 +386,7 @@ def full_fast_ntt(f_br,q,N,factor_table):
 				start_time = time.perf_counter()
 				w_odd = factor_table[idx]
 				j = k+pair
-				# print(i,m,k,j,idx,w_odd)
+				print(i,m,k,j,idx,w_odd)
 				# T = (w_odd*f[j])%q
 
 				#Montgomery mult mod\
@@ -409,7 +409,7 @@ def full_fast_ntt(f_br,q,N,factor_table):
 				# print("Out",f[k],f[j])
 			idx += 1
 			# print(pw_idx)
-		# print(f_br)
+		print(f_br)
 	return f
 
 def full_fast_Intt(f_br,q,N,N_inv,factor_table):
@@ -427,7 +427,7 @@ def full_fast_Intt(f_br,q,N,N_inv,factor_table):
 			for k in range(m,N,mem): # Loop to other group
 				w_odd = factor_table[idx]
 				j = k+pair
-				print(i,m,k,j,idx,w_odd)
+				# print(i,m,k,j,idx,w_odd)
 
 				# print("In",f[k],f[j],w_odd,q,q_inv)
 				t0 = f[k] + f[j]
@@ -443,7 +443,7 @@ def full_fast_Intt(f_br,q,N,N_inv,factor_table):
 				f[j] = T
 				# print("Out",f[k],f[j])
 				idx += 1
-		print(f_br)
+		# print(f_br)
 	# print((f*N_inv)%q)
 	# print("Ninv = ",N_inv)
 	return (f*N_inv)%q
@@ -469,7 +469,7 @@ def main():
 	global butterfly_test_Intt_mat
 	global w_inv_odd
 
-	Test_N = 64
+	Test_N = 256
 	const = NIST_PQC_CONST("Test")
 	if const == (-1,-1):
 		print("Wrong method")
@@ -677,11 +677,10 @@ def main():
 	btf_cnt = 8
 	op_per_stage = Test_N//(2*btf_cnt)
 	elapsed_time_fastfull_par = ((op_per_stage*btf_calc_time)*stage_cnt*3) + vectordot_time
-	overhead_cycles = Test_N*2 #Rd ramA, WB ramA
+	overhead_cycles = Test_N*2 #Rd ramA, WB ramA + Scaling+Write to Reg
 	bf_cycles_each_op = 10
-	elapsed_time_fastfull_hw = ((((op_per_stage*bf_cycles_each_op)+overhead_cycles)*10e-9*stage_cnt)*3) + vectordot_time
+	elapsed_time_fastfull_hw = ((((op_per_stage*bf_cycles_each_op))*stage_cnt) + overhead_cycles)
 	print("**Full Butterfly 1 pair operation",f"{btf_calc_time:.6f} seconds")
-	print("My Full Butterfly NTT Parallel (python speed)\t: ",f"{elapsed_time_fastfull_par:.6f} seconds")
 	print("My Full Butterfly NTT Real HW approx (1 NTT = 7 cycle latency;100MHz)",f"{elapsed_time_fastfull_hw:.6f} seconds")
 	# print("My NTT_fast(2stage)\t: ",f"{elapsed_timeNTT_fast:.6f} seconds")
 	# print(f"Sympy   \t\t: {elapsed_time_sympy:.6f} seconds")

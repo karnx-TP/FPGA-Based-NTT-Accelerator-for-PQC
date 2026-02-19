@@ -71,7 +71,7 @@ Before moving to hardware, I profiled different polynomial multiplication method
 | **Classic Poly Mult** | 0.001779 | Naive implementation |
 | **My Matrix Mult NTT** | **0.000309** | Optimized algorithmic approach |
 | **My Full Butterfly NTT**| 0.002292 | Slower in Python due to loops, but highly parallelizable in Hardware |
-|**Hardware Perf Approx.**|**0.000027**| 1 butterfly unit = 10 cycles latency with 100MHz and Butterfly do parallelly and includes ram R/W|
+|**Hardware Perf Approx.**|**0.000080**| 1 butterfly unit = 9 cycles latency with 100MHz and Butterfly do parallelly and R/W overhead|
 
 *Hardware approximation treats Butterfly loop as parallel operation which result in the loop of butterfly operation times are counted as parallel.*
 
@@ -79,7 +79,7 @@ Before moving to hardware, I profiled different polynomial multiplication method
 
 ## Source Files Description
 
-### RTL (`/rtl/ntt`)
+### Main RTL (`/rtl/ntt`)
 - All main RTL source codes for implementing NTT Acceleraot.
 
 ### Memory Module (`/rtl/ram_rom`)
@@ -88,10 +88,20 @@ Before moving to hardware, I profiled different polynomial multiplication method
 
 ### Verification Environment (`/rtl/tb`)
 - **`sim_**`**: testbench folders includes testbench file, run scripts and wave files for each test methods.
-
 - **Data Driven**: Compares RTL output against output from Python Computation result
 
 #### For the Design Details See 📁 /rtl
+
+### Software (`/software/`)
+- **`mont.py`,`ntt.py`**: Proof of Concept and Golden Model used in Hardware output verification
+- **`factor_table_rom_gen.py`,**: RTL ROM generation scripts for twiddle factor 
+- **`exceed_addr_dec_gen`** : RTL ROM generation scripts for exceed stage address decoder
+
+### Supplementary (`/Supplementary/`)
+- Supplementary files
+- Timing Diagram design paper
+
+
 
 ## FPGA Implementaion
 - Target Board : Alinx AX7010 (Xilinx Zynq7000)
@@ -101,12 +111,19 @@ Before moving to hardware, I profiled different polynomial multiplication method
 ## Current Successful Work
 - Butterfly Unit has 2 mode : NTT Butterfly and Direct MultMod which allow user to access MultMod logic inside directly
 - Correctly Mux selecting for each stages in Butterfly operation
-- Computed NTT and INTT operation for N=16, q=7681
+- Computed NTT and INTT operation for N=64,128,256 and q=7681
 - Accessed NTT accelerator using Data Bus and Register-Mapped
+- Timing Closure successful at 100MHz
 
-## Current Performance
+## Current Performance (19/2/2025)
+- **Suported Coefficient length** : N = 64,128,256 
+
+*Note : Currently do not support N<64 due to the operation pipelining in each stage*
 - **1 Butterfly Unit latency** : 10 cycles
-- **Full NTT/iNTT computation latency** : 89 cycles
+- **Latency** : $$Latency = T_{clk}[2N + log_2(N)*Cycles_{BFU}*\frac{N}{2*BF\_UNITS}]$$
+$$Time\ complexity = O(N\ log_2N)$$
+*Note 2N comes from Data Read/Write Overhead*
+- **Full NTT/iNTT computation latency (N=256)** : 1795(NTT), 2306(iNTT) cycles,
 
 
 ## Future Work

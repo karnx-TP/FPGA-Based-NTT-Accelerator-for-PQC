@@ -11,6 +11,8 @@ The `ntt_butterfly.sv` module contains the NTT/iNTT transformation by managing t
 * **In-Place Transformation:** Optimized memory footprint using an in-place NTT algorithm on dual-port BRAM.
 * **Pre-computed Twiddle Factors:** ROM-based storage currently configured for **$q=7681$** and **$N=16$**.
 * **Stage-Based Routing:** A specialized stage decoder and MUX network manages operand distribution to **8 parallel Butterfly Units** (BF_UNIT=8). 
+* **ROM-Based Butterfly Unit Address for Exceed Stage** According to complexity of MUX and Address calculation after Stage 3, This design choose ROM Based decoder instead of normal address computation.
+* **2 Port Register Write Back** Store Butterfly result in Temporary register (Depth=16) and gradually write 2 data to rA while next operation is running
 
 ### 5-State Hardware FSM:
 The controller utilizes a 5-state FSM to decouple memory access from arithmetic execution:
@@ -44,3 +46,5 @@ The top-level wrapper integrates the NTT core with a register-mapped bus interfa
 | **NTT_DATAQ** | 0x414 | R/W | Modulus parameter $q$ (e.g., 7681) |
 | **NTT_DATAQINV**| 0x415 | R/W | Montgomery constant $q'$ |
 | **NTT_RAMA_WRITE**| 0x500+ | R/W | Memory-mapped access to Coefficient RAM A |
+
+

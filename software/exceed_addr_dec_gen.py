@@ -10,7 +10,7 @@ import sys
 # W (wDistance = 1<<StageCnt) [16-23 ; 24-31; 16-23 ; 24-31]                   [32-39; 40-47; 48-55;56-63]
 
 #MARK:Parameter
-N = 32
+N = 256
 BF_UNIT = 8
 
 output_dir = "../rtl/ram_rom/"
@@ -54,26 +54,23 @@ for i in range(stage_cnt-4):
 	W_Exceed_Offset_inv = 0
 	for j in range(OP_PER_SG):
 		OpCnt = j
-		if OpCnt == Div_cnt << 1:
+		if OpCnt == Div_cnt << (i+1):
 			Exceed_Offset += 1 << (StageCnt+1)
 			Base = Exceed_Offset
 			W_Exceed_Offset = 0
 			Div_cnt += 1
 			W_Exceed_Offset_inv += 1
-		# print(StageCnt,OpCnt,Base,Base+Stride,Exceed_Offset,":", W_Exceed_Offset,(1<<StageCnt) + W_Exceed_Offset, ":",W_Exceed_Offset_inv)
+		print(StageCnt,OpCnt,Base,Base+Stride,Exceed_Offset,":", W_Exceed_Offset,(1<<StageCnt) + W_Exceed_Offset, ":",W_Exceed_Offset_inv)
 		wExcced_Offset[(StageCnt,OpCnt)] = Base 
 		wExceed_W[(0,StageCnt,OpCnt)] = W_Exceed_Offset # NTT
 		wExceed_W[(1,StageCnt,OpCnt)] = W_Exceed_Offset_inv # INTT
-		if OpCnt == Div_cnt << 1:
-			pass
-		else :
-			Base += 8
+		Base += 8
 		W_Exceed_Offset += 8
 	Stride += 16
 	Divided -= 1
 
-# print(wExcced_Offset)
-# print(wExceed_W)
+print(wExcced_Offset)
+print(wExceed_W)
 
 
 with open(f'{format_file}', 'r') as format:

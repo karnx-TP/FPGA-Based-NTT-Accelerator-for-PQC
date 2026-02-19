@@ -8,7 +8,7 @@ import sys
 
 #MARK: Parameter
 
-Test_N = 32
+Test_N = 256
 q = 7681
 output_path_NTT = "../rtl/ram_rom/rom_wNTT.sv"
 output_path_INV_NTT = "../rtl/ram_rom/rom_w_inv_NTT.sv"
