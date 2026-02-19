@@ -29,6 +29,10 @@ This project implements a hardware accelerator for **Module-Lattice-Based Key-En
 - Verify the design using a co-simulation environment (Python-generated vectors vs. RTL).
 
 
+**NTT Module Design Overview**
+
+![NTT Butterfly Block Diagram](./rtl/pic/NTT_butterfly.drawio.svg)
+
 ## Tools Used
 
 ### RTL & Verification
@@ -80,10 +84,10 @@ Before moving to hardware, I profiled different polynomial multiplication method
 ## Source Files Description
 
 ### Main RTL (`/rtl/ntt`)
-- All main RTL source codes for implementing NTT Acceleraot.
+- All main RTL source codes for implementing NTT Accelerator.
 
 ### Memory Module (`/rtl/ram_rom`)
-- **`bram_dp_word.sv`**: dual port ram for containing polynamial coefficients value (a)
+- **`bram_dp_word.sv`**: dual port ram for containing polynomial coefficients value (a)
 - **`rom_**`**: Rom for twiddle factor
 
 ### Verification Environment (`/rtl/tb`)
