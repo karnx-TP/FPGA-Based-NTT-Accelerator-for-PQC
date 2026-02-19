@@ -7,7 +7,7 @@ This directory contains vivado project folders of NTT Accelerator FPGA implement
 - **Target Frequency** : 100 MHz
 
 ## Implementation Result
-**Note** Implemented Design : N=32
+**Note** Implemented Design : N=64
 
 ### **Resource Usage**
 
