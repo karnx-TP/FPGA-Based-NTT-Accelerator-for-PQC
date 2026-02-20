@@ -68,14 +68,14 @@ This project implements a hardware accelerator for **Module-Lattice-Based Key-En
 
 Before moving to hardware, I profiled different polynomial multiplication methods in Python to justify the need for hardware acceleration and efficient algorithms.
 
-**Python Execution Time Comparison for PolyMult(N=256):**
+**Python Execution Time Comparison for Ring Polynomial Multiplication (N=256):**
 | Method | Time (seconds) | Note |
 | :--- | :--- | :--- |
-| **Numpy** | 0.004318 | Standard library |
-| **Classic Poly Mult** | 0.001779 | Naive implementation |
+| **Numpy** | 0.004318 | Numpy's PolyMult and Div function |
+| **Classic Poly Mult** | 0.001779 | Direct RingPolyMult |
 | **My Matrix Mult NTT** | **0.000309** | Optimized algorithmic approach |
 | **My Full Butterfly NTT**| 0.002292 | Slower in Python due to loops, but highly parallelizable in Hardware |
-|**Hardware Perf Approx.**|**0.000080**| 1 butterfly unit = 9 cycles latency with 100MHz and Butterfly do parallelly and R/W overhead|
+|**Hardware Perf Approx.**|**0.000080**| 1 butterfly unit(8 units parallel) = 10 cycles latency with 100MHz and R/W overhead|
 
 *Hardware approximation treats Butterfly loop as parallel operation which result in the loop of butterfly operation times are counted as parallel.*
 
@@ -124,15 +124,14 @@ Before moving to hardware, I profiled different polynomial multiplication method
 
 *Note : Currently do not support N<64 due to the operation pipelining in each stage*
 - **1 Butterfly Unit latency** : 10 cycles
-- **Latency** : $$Latency = T_{clk}[2N + log_2(N)*Cycles_{BFU}*\frac{N}{2*BF\_UNITS}]$$
+- **Latency** : 
+$$Latency = T_{clk}[2N + log_2(N)*Cycles_{BFU}*\frac{N}{2*BF\_UNITS}]$$
 $$Time\ complexity = O(N\ log_2N)$$
 *Note 2N comes from Data Read/Write Overhead*
 - **Full NTT/iNTT computation latency (N=256)** : 1795(NTT), 2306(iNTT) cycles,
 
 
 ## Future Work
-- Full NTT Accelerator: Complete the control logic for the `ntt_butterfly.sv` module to handle full 256-coefficient polynomials.
-
 - Kyber KeyGen : Extend the hardware to cover Polynomial Multiplication and Matrix Multiplication for Kyber Key generation algorithm
 
 - System Integration: Develop an AXI4-Lite Slave Interface for SoC memory-mapped configuration to connect with Zynq7000 ARM Processor or a RISC-V soft-core (from my previous project).

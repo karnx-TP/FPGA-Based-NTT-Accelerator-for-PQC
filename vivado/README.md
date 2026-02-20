@@ -44,5 +44,3 @@ Power Consumption Summary
 
 - **Dynamic Power** : 0.173W
 - **Total Power** : 0.266W
-
-*Dynamic = 50% of total power (~Device static)*
