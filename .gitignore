@@ -1,0 +1,10 @@
+software/__pycache__/*
+tb/sim_top/work/*
+tb/sim_ntt/work/*
+tb/sim_mont/work/*
+tb/sim_butterfly_unit/work/*
+vivado/NTT/NTT.cache/*
+vivado/NTT/NTT.ip_user_files/*
+vivado/NTT/NTT.runs/*
+vivado/NTT/NTT.sim/*
+vivado/NTT/NTT.xpr
