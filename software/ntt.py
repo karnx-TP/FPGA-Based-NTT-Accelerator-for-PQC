@@ -386,7 +386,7 @@ def full_fast_ntt(f_br,q,N,factor_table):
 				start_time = time.perf_counter()
 				w_odd = factor_table[idx]
 				j = k+pair
-				print(i,m,k,j,idx,w_odd)
+				# print(i,m,k,j,idx,w_odd)
 				# T = (w_odd*f[j])%q
 
 				#Montgomery mult mod\
@@ -409,7 +409,7 @@ def full_fast_ntt(f_br,q,N,factor_table):
 				# print("Out",f[k],f[j])
 			idx += 1
 			# print(pw_idx)
-		print(f_br)
+		# print(f_br)
 	return f
 
 def full_fast_Intt(f_br,q,N,N_inv,factor_table):
@@ -655,8 +655,8 @@ def main():
 	G_ntt_fast = full_fast_ntt(g_br,q,Test_N,factor_table_ntt)
 	start_time2 = time.perf_counter()
 	Dot_res = (F_ntt_fast*G_ntt_fast)%q
-	end_time2 = time.perf_counter()
-	vectordot_time = end_time2 - start_time2
+	# end_time2 = time.perf_counter()
+	# vectordot_time = end_time2 - start_time2
 	ResultFNTT = full_fast_Intt(bit_reversal(Dot_res,Test_N),q,Test_N,N_inv,factor_table_inv_ntt)
 	end_time = time.perf_counter()
 	elapsed_time_fastfull = end_time - start_time
@@ -676,12 +676,12 @@ def main():
 	stage_cnt = math.log2(Test_N)
 	btf_cnt = 8
 	op_per_stage = Test_N//(2*btf_cnt)
-	elapsed_time_fastfull_par = ((op_per_stage*btf_calc_time)*stage_cnt*3) + vectordot_time
+	# elapsed_time_fastfull_par = ((op_per_stage*btf_calc_time)*stage_cnt*3) + vectordot_time # NOT USE
 	overhead_cycles = Test_N*2 #Rd ramA, WB ramA + Scaling+Write to Reg
 	bf_cycles_each_op = 10
-	elapsed_time_fastfull_hw = ((((op_per_stage*bf_cycles_each_op))*stage_cnt) + overhead_cycles)
+	elapsed_time_fastfull_hw = ((((op_per_stage*bf_cycles_each_op))*stage_cnt) + overhead_cycles)*(10e-9)
 	print("**Full Butterfly 1 pair operation",f"{btf_calc_time:.6f} seconds")
-	print("My Full Butterfly NTT Real HW approx (1 NTT = 7 cycle latency;100MHz)",f"{elapsed_time_fastfull_hw:.6f} seconds")
+	print("My Full Butterfly NTT Real HW approx (1 NTT = 10 cycle latency;100MHz)",f"{elapsed_time_fastfull_hw:.6f} seconds")
 	# print("My NTT_fast(2stage)\t: ",f"{elapsed_timeNTT_fast:.6f} seconds")
 	# print(f"Sympy   \t\t: {elapsed_time_sympy:.6f} seconds")
 

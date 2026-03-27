@@ -69,13 +69,13 @@ This project implements a hardware accelerator for **Module-Lattice-Based Key-En
 Before moving to hardware, I profiled different polynomial multiplication methods in Python to justify the need for hardware acceleration and efficient algorithms.
 
 **Python Execution Time Comparison for Ring Polynomial Multiplication (N=256):**
-| Method | Time (seconds) | Note |
+| Method | Time (ms) | Note |
 | :--- | :--- | :--- |
-| **Numpy** | 0.004318 | Numpy's PolyMult and Div function |
-| **Classic Poly Mult** | 0.001779 | Direct RingPolyMult |
-| **My Matrix Mult NTT** | **0.000309** | Optimized algorithmic approach |
-| **My Full Butterfly NTT**| 0.002292 | Slower in Python due to loops, but highly parallelizable in Hardware |
-|**Hardware Perf Approx.**|**0.000080**| 1 butterfly unit(8 units parallel) = 10 cycles latency with 100MHz and R/W overhead|
+| **Numpy** | 4.484 | Numpy's PolyMult and Div function |
+| **Classic Poly Mult** | 3.444 | Direct RingPolyMult |
+| **My Matrix Mult NTT** | **0.341** | Optimized algorithmic approach |
+| **My Full Butterfly NTT**| 4.831 | Slower in Python due to loops, but highly parallelizable in Hardware |
+|**Hardware Perf Approx.**|**0.018**| 1 butterfly unit(8 units parallel) = 10 cycles latency with 100MHz and R/W overhead|
 
 *Hardware approximation treats Butterfly loop as parallel operation which result in the loop of butterfly operation times are counted as parallel.*
 
