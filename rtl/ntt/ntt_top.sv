@@ -12,6 +12,7 @@ module NTT_top #(
 	parameter NTT_OSW = 11'h413,
 	parameter NTT_DATAQ = 11'h414,
 	parameter NTT_DATAQINV = 11'h415,
+	parameter NTT_SIG = 11'h416,
 	parameter NTT_RAMA_WRITE = 11'h500,
 
 	parameter DATA_WIDTH = 13,
@@ -30,6 +31,8 @@ module NTT_top #(
 	input logic[RAM_WORD_LEN-1:0]				UserWrDataIn,
 	output logic[RAM_WORD_LEN-1:0]				UserRdDataOut
 );
+
+	localparam SIGNATURE = 13'h489;
 
 //Reg
 	logic start;
@@ -65,7 +68,7 @@ module NTT_top #(
 	logic[RAM_WORD_LEN-1:0] 						wDataOut_wINTT;
 
 //Reg Access
-	assign UserRdDataOut = (rUserWrAddr == NTT_RAMA_WRITE) ? wRamUserDataOut : rUserRdDataOut;
+	assign UserRdDataOut = (rUserWrAddr[ADDR_WIDTH-1:ADDR_WIDTH-3] == (NTT_RAMA_WRITE>>8)) ? wRamUserDataOut : rUserRdDataOut;
 	always @(posedge clk ) begin
 		rUserWrAddr <= UserWrAddr;
 
@@ -90,6 +93,12 @@ module NTT_top #(
 			end
 			NTT_RAMA_WRITE : begin
 				rUserRdDataOut <= {{(RAM_WORD_LEN-DATA_WIDTH){1'b0}},rDataQ_inv};
+			end
+			NTT_SIG : begin
+				rUserRdDataOut <= {{(RAM_WORD_LEN-DATA_WIDTH){1'b0}},SIGNATURE};
+			end
+			default : begin
+				rUserRdDataOut <= {{(RAM_WORD_LEN-DATA_WIDTH){1'b0}},SIGNATURE};
 			end
 		endcase
 	end
