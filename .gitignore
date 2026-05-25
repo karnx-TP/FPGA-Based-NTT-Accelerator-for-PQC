@@ -8,3 +8,5 @@ vivado/NTT/NTT.ip_user_files/*
 vivado/NTT/NTT.runs/*
 vivado/NTT/NTT.sim/*
 vivado/NTT/NTT.xpr
+software/data
+tb/**/work

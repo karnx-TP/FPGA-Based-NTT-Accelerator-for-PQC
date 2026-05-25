@@ -15,7 +15,7 @@ module tb_ntt_top ();
 	localparam CLK_PERIOD = 10;
 	localparam DATA_WIDTH = BITLEN;
 	localparam ADDR_WIDTH = 11;
-	localparam POLY_LEN = 256;
+	localparam POLY_LEN = 64;
 	localparam N_INV_M = 32;
 	localparam BF_UNIT = 8;
 	localparam RAM_WORD_LEN = 16;
@@ -34,6 +34,7 @@ module tb_ntt_top ();
 	logic[BITLEN:0]		wNTT_A_exp [0:POLY_LEN-1];
 	int wrong_cnt = 0;
 	logic wFinish = 1'b0;
+	logic[RAM_WORD_LEN-1:0]				Result;
 
 
 NTT_top #(
@@ -56,7 +57,7 @@ NTT_top #(
 	.clk(clk),
 	.rstB(rstB),
 
-	//RAM A User Write
+	//User Write
 	.UserWrEn(wTbWrEn),
 	.UserWrAddr(wTbAddr),
 	.UserWrDataIn(wTbdataIn),
@@ -84,6 +85,17 @@ NTT_top #(
 				#(CLK_PERIOD);
 			end
 			wTbWrEn = 1'b0;
+		end
+	endtask
+
+	task readReg(
+		logic [ADDR_WIDTH-1:0]		Addr,
+		logic [DATA_WIDTH-1:0]		result
+	);
+		begin
+			wTbAddr = Addr;
+			#(CLK_PERIOD);
+			result = wTbdataOut;
 		end
 	endtask
 
@@ -152,15 +164,12 @@ NTT_top #(
 			wFinish = wTbdataOut[2];
 		end
 		wFinish = 0;
-		wNTT_A_exp = {4035,5326,1591,3793,231,2379,5189,6990,3768,6767,2392,5531,3443,6217,1699,310,4277,4576,5430,4897,5327,2716,6047,1029,4633,636,747,1948,2624,857,681,4229,7176,4503,196,2687,3235,1919,4932,5958,4852,3921,4730,2964,4691,1294,4128,7268,591,1722,4542,2041,6475,3520,2124,2851,2843,6146,3398,3864,7488,534,2743,6036,6238,5825,6887,1412,1549,327,3934,4573,7089,5243,7611,7290,1681,4023,3659,1272,265,5910,6968,7178,5713,6871,1912,4974,1024,1379,5585,4823,6155,6187,3312,6385,413,4168,2965,2984,6622,4328,6101,3944,6265,3175,4584,4561,7532,2253,7458,7353,4361,489,6562,2857,4186,5801,4979,4543,6057,3188,5534,2868,3092,898,1610,5446,4463,1378,2537,1229,299,4979,4505,2750,2807,1859,7426,161,6494,6655,7302,3299,1161,3824,7093,5371,4644,3667,4072,3851,1945,5037,235,6937,4645,6193,4528,3898,2629,416,2807,2171,7273,3191,373,1527,7071,1470,6401,4591,3087,4353,1410,3110,2025,1350,2050,2721,2086,6538,32,3815,2503,3577,2531,5638,7508,1755,7541,3050,2067,6303,4600,7341,7398,6114,6397,1005,7296,4193,5207,1682,234,4821,7223,472,5757,3897,3261,2841,3393,3172,5010,1227,7200,4311,272,2562,876,752,7104,298,2180,7409,3549,5488,5248,7125,2691,6795,6313,835,6449,83,3666,1106,4793,6208,6882,6448,298,1864,3269,1850,4809,2302,7038,7483,1544,2003,6018,5576,2567,649};
+		wNTT_A_exp = {4144,4272,1005,5282,1588,6160,3113,1629,5155,6159,5057,932,3990,3531,2097,5811,5244,295,2188,7103,2310,6839,1752,4531,5915,4249,4568,4590,3480,2635,2943,5906,3664,6781,5377,1466,4793,6626,2538,3685,3682,6494,3679,384,7604,7022,209,1532,3685,540,3832,6327,6031,3318,5873,4943,6088,2927,6449,4253,1150,2785,2942,2385};
 		for(int i=0;i<POLY_LEN;i++)begin
-			if(wNTT_A_exp[i] !=uNTT_top.ramA.ram[0+i])begin
+			readReg(NTT_RAMA_WRITE+i,Result);
+			if(wNTT_A_exp[i] != Result)begin
 				wrong_cnt += 1;
 				$display("Wrong @",i);
-				break;
-			end
-			if(i == POLY_LEN-1)begin
-				$display("Correct");
 			end
 		end 
 
@@ -174,16 +183,12 @@ NTT_top #(
 			wFinish = wTbdataOut[2];
 		end
 		for(int i=0;i<POLY_LEN;i++)begin
-			if(wA[i] != uNTT_top.ramA.ram[0+i])begin
+			readReg(NTT_RAMA_WRITE+i,Result);
+			if(wA[i] != Result)begin
 				wrong_cnt += 1;
 				$display("Wrong @",i);
-				break;
-			end
-			if(i == POLY_LEN-1)begin
-				$display("Correct");
 			end
 		end 
-		
 
 
 		#(3*CLK_PERIOD);

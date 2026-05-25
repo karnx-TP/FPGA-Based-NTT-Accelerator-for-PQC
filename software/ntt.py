@@ -469,7 +469,7 @@ def main():
 	global butterfly_test_Intt_mat
 	global w_inv_odd
 
-	Test_N = 256
+	Test_N = 64
 	const = NIST_PQC_CONST("Test")
 	if const == (-1,-1):
 		print("Wrong method")

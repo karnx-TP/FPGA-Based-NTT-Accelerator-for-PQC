@@ -10,7 +10,7 @@ import sys
 # W (wDistance = 1<<StageCnt) [16-23 ; 24-31; 16-23 ; 24-31]                   [32-39; 40-47; 48-55;56-63]
 
 #MARK:Parameter
-N = 256
+N = 64
 BF_UNIT = 8
 
 output_dir = "../rtl/ram_rom/"
